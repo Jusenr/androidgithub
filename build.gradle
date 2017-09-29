@@ -1,0 +1,52 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.3.3'
+
+        classpath "io.realm:realm-gradle-plugin:3.1.4"
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+    }
+}
+
+subprojects {
+    configurations.all {
+        resolutionStrategy {
+            force 'com.google.code.findbugs:jsr305:3.0.1'
+        }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+//获取版本号
+def getVersionName() {
+    int num = rootProject.ext.VERSION_NUM
+    if (num > 0) {
+        return String.format("%s.%d", rootProject.ext.VERSIONNAME, rootProject.ext.VERSION_NUM)
+    } else {
+        return rootProject.ext.VERSIONNAME
+    }
+}
+
+ext {
+    APP_LOG_TAG = "github_app"//app打印日志的tag
+
+    VERSIONNAME = "1.0.0"
+    VERSION_NUM = 0 //内部测试使用的小版本号
+
+    MANIFESTPLACEHOLDERS = [UMENG_APPKEY_VALUE: "598c2a36717c190b93000205"]
+}

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--QrCodeFinderView-->
+    <declare-styleable name="QrCodeFinderView">
+        <attr name="innerWidth" format="dimension"/>
+        <attr name="innerHeight" format="dimension"/>
+        <attr name="innerAngleThick" format="dimension"/>
+        <attr name="innerAngleLength" format="dimension"/>
+        <attr name="maskColor" format="color"/>
+        <attr name="frameColor" format="color"/>
+        <attr name="laserColor" format="color"/>
+    </declare-styleable>
+
+    <!--CleanableEditText-->
+    <declare-styleable name="CleanableEditText">
+        <attr name="maxLength" format="integer"/>
+    </declare-styleable>
+
+    <declare-styleable name="BaseRecyclerView">
+        <attr name="layoutMode" format="enum">
+            <enum name="horizontal" value="0"/>
+            <enum name="vertical" value="1"/>
+            <enum name="invalid_offset" value="2"/>
+            <enum name="grid" value="3"/>
+        </attr>
+        <attr name="columnCount" format="integer"/>
+        <attr name="row_divider" format="boolean"/>
+        <attr name="span_divider" format="boolean"/>
+        <attr name="divider_width" format="dimension"/>
+        <attr name="divider_height" format="dimension"/>
+        <attr name="divider_marginLeft" format="dimension"/>
+        <attr name="divider_marginRight" format="dimension"/>
+        <attr name="divider_marginTop" format="dimension"/>
+        <attr name="divider_marginBottom" format="dimension"/>
+        <attr name="divider_color" format="color"/>
+        <attr name="inner" format="boolean"/>
+    </declare-styleable>
+
+    <!--TimeButton-->
+    <declare-styleable name="TimeButton">
+        <attr name="countdown_time" format="integer"/>
+        <attr name="text_before" format="string"/>
+        <attr name="text_after" format="string"/>
+        <attr name="click_background" format="reference"/>
+        <attr name="unclick_background" format="reference"/>
+        <attr name="click_textColor" format="color|reference"/>
+        <attr name="unclick_textColor" format="color|reference"/>
+    </declare-styleable>
+
+    <!--SwitchButton-->
+    <declare-styleable name="SwitchButton">
+        <attr name="isSelect" format="boolean"/>
+        <attr name="selDrawable" format="reference"/>
+        <attr name="norDrawable" format="reference"/>
+    </declare-styleable>
+
+    <!--SwipeMenuLayout-->
+    <declare-styleable name="SwipeMenuLayout">
+        <attr name="swipeEnable" format="boolean"/>
+        <attr name="ios" format="boolean"/>
+        <attr name="leftSwipe" format="boolean"/>
+    </declare-styleable>
+
+    <!--SettingItem-->
+    <declare-styleable name="SettingItem">
+        <attr name="setting_icon" format="reference"/>
+        <attr name="setting_icon2" format="reference"/>
+        <attr name="setting_right_icon" format="reference"/>
+        <attr name="setting_right_icon_is_show" format="boolean"/>
+        <attr name="setting_text" format="string"/>
+        <attr name="setting_divider_color" format="color|reference"/>
+        <attr name="setting_indicator_background" format="reference"/>
+        <attr name="setting_indicator_color" format="color|reference"/>
+        <attr name="setting_text_color" format="color|reference"/>
+        <attr name="setting_text_size" format="integer"/>
+        <attr name="setting_info_text" format="string"/>
+        <attr name="setting_info_text_color" format="color|reference"/>
+        <attr name="setting_info_text_size" format="integer"/>
+        <attr name="setting_divider" format="enum">
+            <enum name="none" value="0"/>
+            <enum name="top" value="1"/>
+            <enum name="bottom" value="2"/>
+        </attr>
+    </declare-styleable>
+
+    <!--ImageDraweeView-->
+    <declare-styleable name="FrescoImageView">
+    </declare-styleable>
+    <declare-styleable name="PullScrollView">
+        <attr name="header" format="reference"/>
+        <attr name="headerHeight" format="dimension"/>
+        <attr name="headerVisibleHeight" format="dimension"/>
+    </declare-styleable>
+
+</resources>
