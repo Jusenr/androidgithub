@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.annotation.Nullable;
 
 import com.jusenr.androidgithub.BuildConfig;
+import com.jusenr.androidgithub.SharePlatform;
 import com.umeng.analytics.MobclickAgent;
 
 /**
@@ -29,6 +30,11 @@ public class InitializeIntentService extends IntentService {
         //Logcat异常捕捉
 //        CrashHandler.getInstance().initCrashHandler(getApplication());
 
+        // init Feedback
+//        FeedbackPlatform.init(this.getApplication());
+
+        // init Share
+        SharePlatform.init(this.getApplicationContext());
     }
 
     private void setupUmeng() {

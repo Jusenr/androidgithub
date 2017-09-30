@@ -2,6 +2,7 @@ package com.jusenr.androidgithub.base;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.view.LayoutInflaterCompat;
 
 import com.jusenr.androidgithub.R;
 import com.jusenr.androidlibrary.base.BaseActivity;
@@ -9,6 +10,7 @@ import com.jusenr.androidlibrary.base.loading.LoadView;
 import com.jusenr.androidlibrary.base.loading.LoadingView;
 import com.jusenr.toolslibrary.utils.EventBusUtils;
 import com.jusenr.toolslibrary.utils.ToastUtils;
+import com.mikepenz.iconics.context.IconicsLayoutInflater;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -33,7 +35,11 @@ public abstract class PTActivity extends BaseActivity implements LoadView {
 
     @Override
     protected final void onCreate(@Nullable Bundle savedInstanceState) {
+        // define the IconicsLayoutInflater
+        // this is compatible with calligraphy and other libs which wrap the baseContext
+        LayoutInflaterCompat.setFactory(getLayoutInflater(), new IconicsLayoutInflater(getDelegate()));
         super.onCreate(savedInstanceState);
+
         mApplication = (PTApplication) getApplication();
         unbinder = ButterKnife.bind(this);
         mLoadingView = new LoadingView(this, getLoadingMessage());

@@ -20,7 +20,7 @@ public class LoginPresenter extends BasePresenter<LoginContract.View, LoginContr
         super(view, interactor);
     }
 
-    public void onLogin(String username, String password) {
+    public void onLogin(final String username, String password) {
         subscriptions.add(mInteractor.login(username, password)
                 .doOnSubscribe(new Action0() {
                     @Override
@@ -48,6 +48,7 @@ public class LoginPresenter extends BasePresenter<LoginContract.View, LoginContr
                     @Override
                     public void onNext(JSONObject object) {
                         AccountHelper.login(object);
+                        AccountHelper.saveUsername(username);
                         onUserInfo();
                     }
                 }));

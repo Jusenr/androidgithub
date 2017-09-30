@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.jusenr.androidgithub">
 
-
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
@@ -23,9 +22,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.BLUETOOTH"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-
     <uses-permission android:name="android.permission.MANAGE_ACCOUNTS"/>
-
 
     <application
         android:name=".base.PTApplication"
@@ -42,7 +39,9 @@
             android:name="UMENG_CHANNEL"
             android:value="${UMENG_CHANNEL_VALUE}"/>
 
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".guidance.LogoSplashActivity"
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -52,6 +51,17 @@
         <activity
             android:name=".user.ui.activity.LoginActivity"
             android:screenOrientation="portrait"/>
+        <activity
+            android:name=".home.MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/MaterialDrawerTheme.Light.DarkToolbar"/>
+        <activity
+            android:name=".user.ProfileActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".user.SettingsActivity"
+            android:screenOrientation="portrait"/>
+
     </application>
 
 </manifest>

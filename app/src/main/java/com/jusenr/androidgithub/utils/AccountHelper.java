@@ -26,8 +26,7 @@ public class AccountHelper {
         if (object != null) {
             String note = object.getString("note");
             if (!StringUtils.isEmpty(note)) {
-                AccountHelper.saveCurrentUid(note);
-                DBManager.initDefaultRealm(note, APPRealmMigration.VERSION, new APPRealmMigration());
+                AccountHelper.saveNote(note);
             }
 
             String token = object.getString("token");
@@ -41,7 +40,11 @@ public class AccountHelper {
             String email = object.getString("email");
             if (!StringUtils.isEmpty(email))
                 PreferenceUtils.save(Constants.SPKey.PREFERENCE_KEY_EXPIRE_TIME, email);
-//
+
+            String username = getUsername();
+            if (!StringUtils.isEmpty(username)) {
+                DBManager.initDefaultRealm(username, APPRealmMigration.VERSION, new APPRealmMigration());
+            }
 //            String mobile = bean.getMobile();
 //            if (!StringUtils.isEmpty(mobile))
 //                AccountHelper.saveMobile(mobile);
@@ -93,7 +96,7 @@ public class AccountHelper {
      * @return 当前登录的Uid
      */
     public static String getCurrentUid() {
-        return PreferenceUtils.getValue(Constants.SPKey.PREFERENCE_KEY_NOTE, null);
+        return PreferenceUtils.getValue(Constants.SPKey.PREFERENCE_KEY_UID, null);
     }
 
     /**
@@ -102,7 +105,7 @@ public class AccountHelper {
      * @param uid
      */
     public static void saveCurrentUid(String uid) {
-        PreferenceUtils.save(Constants.SPKey.PREFERENCE_KEY_NOTE, uid);
+        PreferenceUtils.save(Constants.SPKey.PREFERENCE_KEY_UID, uid);
     }
 
     /**
@@ -142,17 +145,17 @@ public class AccountHelper {
      *
      * @return 当前登录的手机号
      */
-    public static String getMobile() {
-        return PreferenceUtils.getValue(Constants.SPKey.PREFERENCE_KEY_MOBILE, null);
+    public static String getUsername() {
+        return PreferenceUtils.getValue(Constants.SPKey.PREFERENCE_KEY_USERNAME, null);
     }
 
     /**
      * 保存当前登录的手机号
      *
-     * @param mobile
+     * @param username
      */
-    public static void saveMobile(String mobile) {
-        PreferenceUtils.save(Constants.SPKey.PREFERENCE_KEY_MOBILE, mobile);
+    public static void saveUsername(String username) {
+        PreferenceUtils.save(Constants.SPKey.PREFERENCE_KEY_USERNAME, username);
     }
 
     /**
@@ -171,6 +174,24 @@ public class AccountHelper {
      */
     public static void saveNickname(String nickname) {
         PreferenceUtils.save(Constants.SPKey.PREFERENCE_KEY_NICKNAME, nickname);
+    }
+
+    /**
+     * 获取当前用户昵称
+     *
+     * @return 当前用户昵称
+     */
+    public static String getNote() {
+        return PreferenceUtils.getValue(Constants.SPKey.PREFERENCE_KEY_NOTE, null);
+    }
+
+    /**
+     * 保存当前用户昵称
+     *
+     * @param note
+     */
+    public static void saveNote(String note) {
+        PreferenceUtils.save(Constants.SPKey.PREFERENCE_KEY_NOTE, note);
     }
 
     /**

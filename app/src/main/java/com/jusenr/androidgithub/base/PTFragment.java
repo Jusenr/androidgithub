@@ -68,7 +68,7 @@ public abstract class PTFragment extends BaseFragment implements LoadView {
         mLoadingView.show();
     }
 
-    public void hideLoading() {
+    public void dismissLoading() {
         mLoadingView.dismiss();
     }
 

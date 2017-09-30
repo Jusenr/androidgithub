@@ -31,7 +31,6 @@ public interface PassApi {
      * @param createAuthorization 固定参数信息
      * @return
      */
-    @FormUrlEncoded
     @POST(BaseApi.Url.URL_LOGIN)
     Observable<JSONObject> login(@Header("Authorization") String authorization, @Body CreateAuthorization createAuthorization);
 

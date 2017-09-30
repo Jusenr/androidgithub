@@ -13,6 +13,7 @@ import com.jusenr.androidgithub.user.di.component.DaggerLoginComponent;
 import com.jusenr.androidgithub.user.di.module.LoginModule;
 import com.jusenr.androidgithub.user.model.model.UserModel;
 import com.jusenr.androidgithub.user.presenter.LoginPresenter;
+import com.jusenr.androidgithub.utils.AccountHelper;
 import com.jusenr.androidgithub.utils.InputMethodUtils;
 import com.jusenr.toolslibrary.log.logger.Logger;
 import com.jusenr.toolslibrary.utils.StringUtils;
@@ -58,11 +59,21 @@ public class LoginActivity extends PTMVPActivity<LoginPresenter> implements Logi
 
         setTitle(R.string.sign_in);
 
+        String username = AccountHelper.getUsername();
+        if (!StringUtils.isEmpty(username)) {
+            mEtUsername.setText(username);
+//            mEtPassword.setFocusable(true);
+            mEtPassword.setFocusableInTouchMode(true);
+        }
     }
 
     @Override
     public void loginResult(UserModel bean) {
-        Logger.i(bean.toString());
+        if (bean != null) {
+            AccountHelper.saveNickname(bean.getName());
+            AccountHelper.saveAvatar(bean.getAvatar_url());
+            Logger.i(bean.toString());
+        }
         finish();
     }
 
@@ -80,11 +91,8 @@ public class LoginActivity extends PTMVPActivity<LoginPresenter> implements Logi
 
     @OnClick(R.id.login_btn)
     public void onViewClicked() {
-        String username = mEtUsername.getText().toString();
-        String password = mEtPassword.getText().toString();
-
-        username = "jusenr@163.com";
-        password = "1229zxr?.";
+        String username = mEtUsername.getText().toString().trim();
+        String password = mEtPassword.getText().toString().trim();
 
         if (!TextUtils.isEmpty(username) && !TextUtils.isEmpty(password)) {
             InputMethodUtils.hideSoftInput(this);
