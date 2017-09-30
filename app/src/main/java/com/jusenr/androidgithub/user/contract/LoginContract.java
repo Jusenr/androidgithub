@@ -1,17 +1,17 @@
 package com.jusenr.androidgithub.user.contract;
 
 import com.alibaba.fastjson.JSONObject;
-import com.jusenr.androidgithub.user.model.model.User;
+import com.jusenr.androidlibrary.base.loading.LoadView;
+import com.jusenr.androidgithub.user.model.model.UserModel;
 import com.jusenr.androidlibrary.base.IInteractor;
-import com.jusenr.androidlibrary.base.IView;
 
 import rx.Observable;
 
 public interface LoginContract {
 
-    interface View extends IView {
+    interface View extends LoadView {
 
-        void loginResult(User bean);
+        void loginResult(UserModel bean);
 
         void loginFailed(int code, String msg);
     }

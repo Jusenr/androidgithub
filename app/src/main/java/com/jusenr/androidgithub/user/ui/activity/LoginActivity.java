@@ -11,9 +11,11 @@ import com.jusenr.androidgithub.base.PTMVPActivity;
 import com.jusenr.androidgithub.user.contract.LoginContract;
 import com.jusenr.androidgithub.user.di.component.DaggerLoginComponent;
 import com.jusenr.androidgithub.user.di.module.LoginModule;
-import com.jusenr.androidgithub.user.model.model.User;
+import com.jusenr.androidgithub.user.model.model.UserModel;
 import com.jusenr.androidgithub.user.presenter.LoginPresenter;
 import com.jusenr.androidgithub.utils.InputMethodUtils;
+import com.jusenr.toolslibrary.log.logger.Logger;
+import com.jusenr.toolslibrary.utils.StringUtils;
 import com.jusenr.toolslibrary.utils.ToastUtils;
 import com.rey.material.widget.Button;
 
@@ -46,6 +48,11 @@ public class LoginActivity extends PTMVPActivity<LoginPresenter> implements Logi
     }
 
     @Override
+    public String getLoadingMessage() {
+        return null;
+    }
+
+    @Override
     protected void onViewCreated(@Nullable Bundle savedInstanceState) {
         super.onViewCreated(savedInstanceState);
 
@@ -54,22 +61,21 @@ public class LoginActivity extends PTMVPActivity<LoginPresenter> implements Logi
     }
 
     @Override
-    public void loginResult(User bean) {
-        if (bean != null && bean.getName() != null) {
-            ToastUtils.show(this, bean.getName());
-        }
+    public void loginResult(UserModel bean) {
+        Logger.i(bean.toString());
         finish();
     }
 
     @Override
     public void loginFailed(int code, String msg) {
-
+        if (!StringUtils.isEmpty(msg))
+            ToastUtils.show(this, msg);
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        mPresenter.onDestroy();
+
     }
 
     @OnClick(R.id.login_btn)

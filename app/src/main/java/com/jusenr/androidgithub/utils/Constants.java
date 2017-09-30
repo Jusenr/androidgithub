@@ -62,14 +62,15 @@ public class Constants {
     }
 
     public static class SPKey {
-        public static final String PREFERENCE_KEY_UID = "uid";
+        public static final String PREFERENCE_KEY_NOTE = "note";
         public static final String PREFERENCE_KEY_TOKEN = "token";
+        public static final String PREFERENCE_KEY_HASHED_TOKEN = "hashed_token";
+
         public static final String PREFERENCE_KEY_TOKEN_ID = "tokenId";
         public static final String PREFERENCE_KEY_NICKNAME = "nickname";
         public static final String PREFERENCE_KEY_GENDER = "gender";
         public static final String PREFERENCE_KEY_MOBILE = "mobile";
         public static final String PREFERENCE_KEY_EXPIRE_TIME = "expire_tim";
-        public static final String PREFERENCE_KEY_REFRESH_TOKEN = "refresh_token";
         public static final String PREFERENCE_KEY_AVATAR = "avatar";
         public static final String PREFERENCE_KEY_IS_FIRST = "is_first";
     }

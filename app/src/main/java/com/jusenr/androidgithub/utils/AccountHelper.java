@@ -1,5 +1,6 @@
 package com.jusenr.androidgithub.utils;
 
+import com.alibaba.fastjson.JSONObject;
 import com.jusenr.androidgithub.realm.APPRealmMigration;
 import com.jusenr.androidlibrary.commn.database.DBManager;
 import com.jusenr.toolslibrary.utils.PreferenceUtils;
@@ -19,47 +20,47 @@ public class AccountHelper {
     /**
      * 登录
      *
-     * @param bean
+     * @param object
      */
-    public static void login(PassModel bean) {
-        if (bean != null) {
-            String uid = bean.getUid();
-            if (!StringUtils.isEmpty(uid)) {
-                AccountHelper.saveCurrentUid(uid);
-                DBManager.initDefaultRealm(uid, APPRealmMigration.VERSION, new APPRealmMigration());
+    public static void login(JSONObject object) {
+        if (object != null) {
+            String note = object.getString("note");
+            if (!StringUtils.isEmpty(note)) {
+                AccountHelper.saveCurrentUid(note);
+                DBManager.initDefaultRealm(note, APPRealmMigration.VERSION, new APPRealmMigration());
             }
 
-            String token = bean.getToken();
+            String token = object.getString("token");
             if (!StringUtils.isEmpty(token))
                 AccountHelper.saveToken(token);
 
-            String refresh_token = bean.getRefresh_token();
-            if (!StringUtils.isEmpty(refresh_token))
-                PreferenceUtils.save(Constants.SPKey.PREFERENCE_KEY_REFRESH_TOKEN, refresh_token);
+            String hashed_token = object.getString("hashed_token");
+            if (!StringUtils.isEmpty(hashed_token))
+                PreferenceUtils.save(Constants.SPKey.PREFERENCE_KEY_HASHED_TOKEN, hashed_token);
 
-            long expire_time = bean.getExpire_time();
-            if (expire_time != 0)
-                PreferenceUtils.save(Constants.SPKey.PREFERENCE_KEY_EXPIRE_TIME, expire_time);
-
-            String mobile = bean.getMobile();
-            if (!StringUtils.isEmpty(mobile))
-                AccountHelper.saveMobile(mobile);
-
-            String nickname = bean.getNickname();
-            if (!StringUtils.isEmpty(nickname))
-                AccountHelper.saveNickname(nickname);
-
-            String gender = bean.getGender();
-            if (!StringUtils.isEmpty(gender))
-                PreferenceUtils.save(Constants.SPKey.PREFERENCE_KEY_GENDER, gender);
-
-            String avatar = bean.getAvatar();
-            if (!StringUtils.isEmpty(avatar))
-                AccountHelper.saveAvatar(avatar);
-
-            String tokenId = String.valueOf(bean.getTokenID());
-            if (!StringUtils.isEmpty(tokenId))
-                AccountHelper.saveTokenId(tokenId);
+            String email = object.getString("email");
+            if (!StringUtils.isEmpty(email))
+                PreferenceUtils.save(Constants.SPKey.PREFERENCE_KEY_EXPIRE_TIME, email);
+//
+//            String mobile = bean.getMobile();
+//            if (!StringUtils.isEmpty(mobile))
+//                AccountHelper.saveMobile(mobile);
+//
+//            String nickname = bean.getNickname();
+//            if (!StringUtils.isEmpty(nickname))
+//                AccountHelper.saveNickname(nickname);
+//
+//            String gender = bean.getGender();
+//            if (!StringUtils.isEmpty(gender))
+//                PreferenceUtils.save(Constants.SPKey.PREFERENCE_KEY_GENDER, gender);
+//
+//            String avatar = bean.getAvatar();
+//            if (!StringUtils.isEmpty(avatar))
+//                AccountHelper.saveAvatar(avatar);
+//
+//            String tokenId = String.valueOf(bean.getTokenID());
+//            if (!StringUtils.isEmpty(tokenId))
+//                AccountHelper.saveTokenId(tokenId);
         }
     }
 
@@ -76,10 +77,11 @@ public class AccountHelper {
      * 登出
      */
     public static void logout() {
-        PreferenceUtils.remove(Constants.SPKey.PREFERENCE_KEY_UID);
+        PreferenceUtils.remove(Constants.SPKey.PREFERENCE_KEY_NOTE);
         PreferenceUtils.remove(Constants.SPKey.PREFERENCE_KEY_TOKEN);
+        PreferenceUtils.remove(Constants.SPKey.PREFERENCE_KEY_HASHED_TOKEN);
+
         PreferenceUtils.remove(Constants.SPKey.PREFERENCE_KEY_TOKEN_ID);
-        PreferenceUtils.remove(Constants.SPKey.PREFERENCE_KEY_REFRESH_TOKEN);
         PreferenceUtils.remove(Constants.SPKey.PREFERENCE_KEY_EXPIRE_TIME);
         PreferenceUtils.remove(Constants.SPKey.PREFERENCE_KEY_NICKNAME);
         PreferenceUtils.remove(Constants.SPKey.PREFERENCE_KEY_AVATAR);
@@ -91,7 +93,7 @@ public class AccountHelper {
      * @return 当前登录的Uid
      */
     public static String getCurrentUid() {
-        return PreferenceUtils.getValue(Constants.SPKey.PREFERENCE_KEY_UID, null);
+        return PreferenceUtils.getValue(Constants.SPKey.PREFERENCE_KEY_NOTE, null);
     }
 
     /**
@@ -100,7 +102,7 @@ public class AccountHelper {
      * @param uid
      */
     public static void saveCurrentUid(String uid) {
-        PreferenceUtils.save(Constants.SPKey.PREFERENCE_KEY_UID, uid);
+        PreferenceUtils.save(Constants.SPKey.PREFERENCE_KEY_NOTE, uid);
     }
 
     /**

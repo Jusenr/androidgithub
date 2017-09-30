@@ -7,6 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.jusenr.androidlibrary.base.BaseFragment;
+import com.jusenr.androidlibrary.base.loading.LoadView;
+import com.jusenr.androidlibrary.base.loading.LoadingView;
 import com.jusenr.toolslibrary.utils.EventBusUtils;
 
 import butterknife.ButterKnife;
@@ -16,12 +18,12 @@ import butterknife.Unbinder;
  * Created by riven_chris on 2017/4/20.
  */
 
-public abstract class PTFragment extends BaseFragment {
+public abstract class PTFragment extends BaseFragment implements LoadView {
 
     protected PTApplication mApplication;
     private Unbinder unbinder;
 
-//    protected LoadingHUD loading;
+    private LoadingView mLoadingView;
 //    protected ILoadState loadState;
 
     @Nullable
@@ -35,12 +37,14 @@ public abstract class PTFragment extends BaseFragment {
         super.onViewCreated(view, savedInstanceState);
         mApplication = (PTApplication) getActivity().getApplication();
         unbinder = ButterKnife.bind(this, view);
-//        loading = LoadingHUD.build(getActivity());
+        mLoadingView = new LoadingView(getActivity(), getLoadingMessage());
 //        loadState = (ILoadState) view.findViewById(R.id.load_state_view);
         if (useEventBus())
             EventBusUtils.register(this);
         onViewCreateFinish(view, savedInstanceState);
     }
+
+    public abstract String getLoadingMessage();
 
     public abstract void onViewCreateFinish(View view, @Nullable Bundle savedInstanceState);
 
@@ -53,13 +57,20 @@ public abstract class PTFragment extends BaseFragment {
 
     }
 
-//    public void showLoading() {
-//        loading.show();
-//    }
-//
-//    public void hideLoading() {
-//        loading.dismiss();
-//    }
+    @Override
+    public void onStop() {
+        super.onStop();
+        if (mLoadingView != null)
+            mLoadingView.dismiss();
+    }
+
+    public void showLoading() {
+        mLoadingView.show();
+    }
+
+    public void hideLoading() {
+        mLoadingView.dismiss();
+    }
 
     protected boolean useEventBus() {
         return false;

@@ -5,6 +5,8 @@ import android.support.annotation.Nullable;
 
 import com.jusenr.androidgithub.R;
 import com.jusenr.androidlibrary.base.BaseActivity;
+import com.jusenr.androidlibrary.base.loading.LoadView;
+import com.jusenr.androidlibrary.base.loading.LoadingView;
 import com.jusenr.toolslibrary.utils.EventBusUtils;
 import com.jusenr.toolslibrary.utils.ToastUtils;
 
@@ -15,7 +17,7 @@ import butterknife.Unbinder;
  * Created by riven_chris on 2017/4/20.
  */
 
-public abstract class PTActivity extends BaseActivity {
+public abstract class PTActivity extends BaseActivity implements LoadView {
 
     protected PTApplication mApplication;
     protected boolean isResume;
@@ -23,7 +25,7 @@ public abstract class PTActivity extends BaseActivity {
 
     private Unbinder unbinder;
 
-//    protected LoadingHUD loading;
+    private LoadingView mLoadingView;
 //    protected ILoadState loadState;
 //    protected PTLoading mPTLoading;
 //    protected PTToast mPTToast;
@@ -34,7 +36,7 @@ public abstract class PTActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         mApplication = (PTApplication) getApplication();
         unbinder = ButterKnife.bind(this);
-//        loading = LoadingHUD.build(this);
+        mLoadingView = new LoadingView(this, getLoadingMessage());
 //        loadState = (ILoadState) findViewById(R.id.load_state_view);
 //        mPTLoading = new PTLoading.Builder(this)
 //                .setCanceledOnTouchOutside(false)
@@ -48,6 +50,8 @@ public abstract class PTActivity extends BaseActivity {
             EventBusUtils.register(this);
         onViewCreated(savedInstanceState);
     }
+
+    public abstract String getLoadingMessage();
 
     protected abstract void onViewCreated(@Nullable Bundle savedInstanceState);
 
@@ -66,8 +70,8 @@ public abstract class PTActivity extends BaseActivity {
     @Override
     protected void onStop() {
         super.onStop();
-//        if (loading != null)
-//            loading.dismiss();
+        if (mLoadingView != null)
+            mLoadingView.dismiss();
 //        if (mPTLoading != null)
 //            mPTLoading.dismiss();
 //        if (mPTToast != null)
@@ -83,6 +87,15 @@ public abstract class PTActivity extends BaseActivity {
             EventBusUtils.unregister(this);
     }
 
+    @Override
+    public void showLoading() {
+        mLoadingView.show();
+    }
+
+    @Override
+    public void dismissLoading() {
+        mLoadingView.dismiss();
+    }
 
     protected boolean useEventBus() {
         return false;
@@ -102,7 +115,6 @@ public abstract class PTActivity extends BaseActivity {
         }
         return true;
     }
-
 
 
 //    public void showOfflineDialog() {

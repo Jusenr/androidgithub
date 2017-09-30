@@ -24,10 +24,25 @@ import rx.Observable;
 
 public interface PassApi {
 
-    @POST("/authorizations")
+    /**
+     * 授权登录
+     *
+     * @param authorization       授权账号信息
+     * @param createAuthorization 固定参数信息
+     * @return
+     */
+    @FormUrlEncoded
+    @POST(BaseApi.Url.URL_LOGIN)
     Observable<JSONObject> login(@Header("Authorization") String authorization, @Body CreateAuthorization createAuthorization);
 
-    @GET("/user")
+    /**
+     * 获取用户信息
+     *
+     * @param authorization 授权账号信息
+     * @param accessToken   Token
+     * @return
+     */
+    @GET(BaseApi.Url.URL_USER)
     Observable<JSONObject> getUserInfo(@Header("Authorization") String authorization, @Query("access_token") String accessToken);
 
     /**
@@ -37,7 +52,7 @@ public interface PassApi {
      * @return
      */
     @FormUrlEncoded
-    @POST(BaseApi.Url.URL_REGISTER)
+    @POST(BaseApi.Url.URL_USER)
     Observable<PassModel> register(@FieldMap Map<String, String> map);
 
     /**

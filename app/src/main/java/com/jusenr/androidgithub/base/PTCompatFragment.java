@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.jusenr.androidlibrary.base.BasePresenter;
+import com.jusenr.androidlibrary.base.loading.LoadView;
+import com.jusenr.androidlibrary.base.loading.LoadingView;
 import com.jusenr.toolslibrary.utils.EventBusUtils;
 
 import javax.inject.Inject;
@@ -20,7 +22,7 @@ import butterknife.Unbinder;
  * Created by Penglingxiao on 2017/4/20.
  */
 
-public abstract class PTCompatFragment<P extends BasePresenter> extends Fragment {
+public abstract class PTCompatFragment<P extends BasePresenter> extends Fragment implements LoadView {
     @Inject
     protected P mPresenter;
 
@@ -28,7 +30,7 @@ public abstract class PTCompatFragment<P extends BasePresenter> extends Fragment
 
     protected PTApplication mApplication;
 
-//    protected LoadingHUD loading;
+    private LoadingView mLoadingView;
 //    protected PTLoading mPTLoading;
 //    protected PTToast mPTToast;
 
@@ -38,7 +40,7 @@ public abstract class PTCompatFragment<P extends BasePresenter> extends Fragment
 //        mApplication = (PTApplication) getActivity().getApplication();
         View view = LayoutInflater.from(getActivity()).inflate(getLayoutId(), null);
         unbinder = ButterKnife.bind(this, view);
-//        loading = LoadingHUD.build(getActivity());
+        mLoadingView = new LoadingView(getActivity(), getLoadingMessage());
 
 //        mPTLoading = new PTLoading.Builder(getActivity())
 //                .setCanceledOnTouchOutside(false)
@@ -62,6 +64,8 @@ public abstract class PTCompatFragment<P extends BasePresenter> extends Fragment
 
     protected abstract int getLayoutId();
 
+    public abstract String getLoadingMessage();
+
     protected abstract void injectComponent();
 
     @Override
@@ -79,8 +83,8 @@ public abstract class PTCompatFragment<P extends BasePresenter> extends Fragment
     @Override
     public void onStop() {
         super.onStop();
-//        if (loading != null)
-//            loading.dismiss();
+        if (mLoadingView != null)
+            mLoadingView.dismiss();
 //        if (mPTLoading != null)
 //            mPTLoading.dismiss();
 //        if (mPTToast != null)
@@ -89,5 +93,13 @@ public abstract class PTCompatFragment<P extends BasePresenter> extends Fragment
 
     protected boolean useEventBus() {
         return false;
+    }
+
+    public void showLoading() {
+        mLoadingView.show();
+    }
+
+    public void hideLoading() {
+        mLoadingView.dismiss();
     }
 }

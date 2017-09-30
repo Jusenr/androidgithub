@@ -2,14 +2,15 @@ package com.jusenr.androidgithub.user.presenter;
 
 import com.alibaba.fastjson.JSONObject;
 import com.jusenr.androidgithub.user.contract.LoginContract;
-import com.jusenr.androidgithub.user.model.model.User;
+import com.jusenr.androidgithub.user.model.model.UserModel;
+import com.jusenr.androidgithub.utils.AccountHelper;
 import com.jusenr.androidlibrary.base.BasePresenter;
 import com.jusenr.androidlibrary.di.scope.ActivityScope;
-import com.jusenr.toolslibrary.log.logger.Logger;
 
 import javax.inject.Inject;
 
 import rx.Subscriber;
+import rx.functions.Action0;
 
 @ActivityScope
 public class LoginPresenter extends BasePresenter<LoginContract.View, LoginContract.Interactor> {
@@ -21,6 +22,18 @@ public class LoginPresenter extends BasePresenter<LoginContract.View, LoginContr
 
     public void onLogin(String username, String password) {
         subscriptions.add(mInteractor.login(username, password)
+                .doOnSubscribe(new Action0() {
+                    @Override
+                    public void call() {
+                        mView.showLoading();
+                    }
+                })
+                .doOnTerminate(new Action0() {
+                    @Override
+                    public void call() {
+                        mView.dismissLoading();
+                    }
+                })
                 .subscribe(new Subscriber<JSONObject>() {
                     @Override
                     public void onCompleted() {
@@ -34,16 +47,26 @@ public class LoginPresenter extends BasePresenter<LoginContract.View, LoginContr
 
                     @Override
                     public void onNext(JSONObject object) {
+                        AccountHelper.login(object);
                         onUserInfo();
-                        User result = object.toJavaObject(User.class);
-//                        mView.loginResult(result);
-                        Logger.i(object.toString());
                     }
                 }));
     }
 
-    public void onUserInfo() {
+    private void onUserInfo() {
         subscriptions.add(mInteractor.getUserInfo()
+                .doOnSubscribe(new Action0() {
+                    @Override
+                    public void call() {
+                        mView.showLoading();
+                    }
+                })
+                .doOnTerminate(new Action0() {
+                    @Override
+                    public void call() {
+                        mView.dismissLoading();
+                    }
+                })
                 .subscribe(new Subscriber<JSONObject>() {
                     @Override
                     public void onCompleted() {
@@ -57,10 +80,9 @@ public class LoginPresenter extends BasePresenter<LoginContract.View, LoginContr
 
                     @Override
                     public void onNext(JSONObject object) {
-                        User result = object.toJavaObject(User.class);
+                        AccountHelper.login(object);
+                        UserModel result = object.toJavaObject(UserModel.class);
                         mView.loginResult(result);
-
-                        Logger.i(object.toString());
                     }
                 }));
     }

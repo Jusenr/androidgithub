@@ -95,16 +95,15 @@ public class BaseApi {
 
     /*所有的相对URL*/
     public static class Url {
-        //==============================PassApi=======================================//
         /**
-         * 通行证-new
+         * 通行证
          *
-         * @see com.putao.ptpad.cn.retrofit.api.PassApi {@link BaseApi#PASS_BASE_URL}.
+         * @see com.jusenr.androidgithub.retrofit.api.PassApi {@link BaseApi#PASS_BASE_URL}.
          */
-        /*家长账户*/
-        public static final String URL_SENDMSG = "api/sendMsg";//发送验证码
-        public static final String URL_REGISTER = "api/register";//注册
-        public static final String URL_LOGIN = "api/login";//登录后的连接传送
+        //==============================PassApi=======================================//
+        public static final String URL_LOGIN = "/authorizations";//登录
+        public static final String URL_USER = "/user";//获取用户信息
+
         public static final String URL_VERIFICATION = "api/verification";//发送图形验证码
         public static final String URL_CHECKMOBILE = "api/checkMobile";//手机注册与否检测
         public static final String URL_SAFESENDMSG = "api/safeSendMsg";//发送验证码安全接口
