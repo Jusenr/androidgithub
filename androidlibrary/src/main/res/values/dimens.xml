@@ -21,6 +21,8 @@
     <dimen name="distance_10dp">10dp</dimen>
     <dimen name="distance_15dp">15dp</dimen>
 
+    <dimen name="distance_180dp">180dp</dimen>
+
     <dimen name="divider_height">1px</dimen>
     <dimen name="margin_small">8dp</dimen>
     <dimen name="drawable_padding_small">4dp</dimen>

@@ -5,6 +5,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.jusenr.androidgithub.base.BaseApi;
 import com.jusenr.androidgithub.retrofit.api.PassApi;
+import com.jusenr.androidgithub.retrofit.api.RepoApi;
 import com.jusenr.androidlibrary.di.scope.AppScope;
 
 import dagger.Module;
@@ -36,13 +37,13 @@ public final class ApiModule {
                 .create(PassApi.class);
     }
 
-//    @Provides
-//    @AppScope
-//    CloudApi provideCloudCodeApi(Gson gson, OkHttpClient okHttpClient) {
-//        return RetrofitFactory
-//                .create(gson, okHttpClient, BaseApi.CLOUD_BASE_URL)
-//                .create(CloudApi.class);
-//    }
+    @Provides
+    @AppScope
+    RepoApi provideRepoApi(Gson gson, OkHttpClient okHttpClient) {
+        return RetrofitFactory
+                .create(gson, okHttpClient, BaseApi.PASS_BASE_URL)
+                .create(RepoApi.class);
+    }
 
     private static class RetrofitFactory {
 

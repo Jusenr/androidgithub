@@ -85,6 +85,11 @@ public class Constants {
     }
 
     public static class Value {
+        // page size
+        public static final int PAGE_SIZE = 30;
+        public static final String SORT_BY_STARS = "stars";
+        public static final String ORDER_BY_DESC = "desc";
+
         public static final String REQUEST_ACCEPT = "ACCEPT";
         public static final String REQUEST_REFUSE = "REFUSE";
         public static final String REQUEST_RESET_PWD_ACCEPT = "1";

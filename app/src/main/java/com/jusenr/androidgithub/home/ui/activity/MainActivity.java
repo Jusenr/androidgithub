@@ -1,4 +1,4 @@
-package com.jusenr.androidgithub.home;
+package com.jusenr.androidgithub.home.ui.activity;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -18,9 +18,9 @@ import android.widget.TextView;
 import com.jusenr.androidgithub.R;
 import com.jusenr.androidgithub.SharePlatform;
 import com.jusenr.androidgithub.base.PTActivity;
-import com.jusenr.androidgithub.home.fragment.MineFragment;
-import com.jusenr.androidgithub.home.fragment.MostStarFragment;
-import com.jusenr.androidgithub.home.fragment.TrendingContainerFragment;
+import com.jusenr.androidgithub.home.ui.fragment.MineFragment;
+import com.jusenr.androidgithub.home.ui.fragment.MostStarFragment;
+import com.jusenr.androidgithub.home.ui.fragment.TrendingContainerFragment;
 import com.jusenr.androidgithub.user.SettingsActivity;
 import com.jusenr.androidgithub.utils.AccountHelper;
 import com.jusenr.androidlibrary.widgets.fresco.FrescoImageView;
@@ -103,10 +103,9 @@ public class MainActivity extends PTActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-
         switch (item.getItemId()) {
             case R.id.action_search:
-//                SearchActivity.launch(this);
+                startActivity(new Intent(this, SearchActivity.class));
                 return true;
         }
         return super.onOptionsItemSelected(item);

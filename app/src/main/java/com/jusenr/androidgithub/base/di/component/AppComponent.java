@@ -3,6 +3,7 @@ package com.jusenr.androidgithub.base.di.component;
 import com.google.gson.Gson;
 import com.jusenr.androidgithub.base.di.module.ApiModule;
 import com.jusenr.androidgithub.retrofit.api.PassApi;
+import com.jusenr.androidgithub.retrofit.api.RepoApi;
 import com.jusenr.androidlibrary.di.component.BaseComponent;
 import com.jusenr.androidlibrary.di.scope.AppScope;
 
@@ -20,6 +21,8 @@ public interface AppComponent {
     Gson gson();
 
     PassApi passApi();
+
+    RepoApi repoApi();
 
     OkHttpClient okHttpClient();
 }

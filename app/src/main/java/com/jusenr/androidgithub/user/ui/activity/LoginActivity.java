@@ -9,7 +9,7 @@ import android.widget.ImageView;
 
 import com.jusenr.androidgithub.R;
 import com.jusenr.androidgithub.base.PTMVPActivity;
-import com.jusenr.androidgithub.home.MainActivity;
+import com.jusenr.androidgithub.home.ui.activity.MainActivity;
 import com.jusenr.androidgithub.user.contract.LoginContract;
 import com.jusenr.androidgithub.user.di.component.DaggerLoginComponent;
 import com.jusenr.androidgithub.user.di.module.LoginModule;

@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
-    tools:context="com.jusenr.androidgithub.home.MainActivity">
+    tools:context="com.jusenr.androidgithub.home.ui.activity.MainActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"

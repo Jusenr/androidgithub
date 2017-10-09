@@ -1,4 +1,4 @@
-package com.jusenr.androidgithub.home.fragment;
+package com.jusenr.androidgithub.home.ui.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

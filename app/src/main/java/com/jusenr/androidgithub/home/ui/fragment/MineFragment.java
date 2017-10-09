@@ -1,4 +1,4 @@
-package com.jusenr.androidgithub.home.fragment;
+package com.jusenr.androidgithub.home.ui.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;

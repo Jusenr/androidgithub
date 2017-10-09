@@ -52,7 +52,7 @@
             android:name=".user.ui.activity.LoginActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".home.MainActivity"
+            android:name=".home.ui.activity.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/MaterialDrawerTheme.Light.DarkToolbar"/>
         <activity
@@ -61,7 +61,10 @@
         <activity
             android:name=".user.SettingsActivity"
             android:screenOrientation="portrait"/>
-
+        <activity
+            android:name=".home.ui.activity.SearchActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/MaterialDrawerTheme.Light.DarkToolbar"/>
     </application>
 
 </manifest>

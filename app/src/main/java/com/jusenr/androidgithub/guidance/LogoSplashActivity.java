@@ -6,7 +6,7 @@ import android.support.annotation.Nullable;
 
 import com.jusenr.androidgithub.R;
 import com.jusenr.androidgithub.base.PTActivity;
-import com.jusenr.androidgithub.home.MainActivity;
+import com.jusenr.androidgithub.home.ui.activity.MainActivity;
 import com.jusenr.androidgithub.user.ui.activity.LoginActivity;
 import com.jusenr.androidgithub.utils.AccountHelper;
 import com.trello.rxlifecycle.android.ActivityEvent;
