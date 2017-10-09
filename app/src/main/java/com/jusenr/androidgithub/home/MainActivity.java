@@ -2,7 +2,6 @@ package com.jusenr.androidgithub.home;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.annotation.Nullable;
@@ -10,23 +9,18 @@ import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 import android.widget.FrameLayout;
-import android.widget.TextView;
 
 import com.jusenr.androidgithub.R;
 import com.jusenr.androidgithub.base.PTActivity;
 import com.jusenr.androidgithub.home.fragment.MineFragment;
 import com.jusenr.androidgithub.home.fragment.MostStarFragment;
 import com.jusenr.androidgithub.home.fragment.TrendingContainerFragment;
-import com.jusenr.androidgithub.user.ProfileActivity;
-import com.jusenr.androidgithub.user.ui.activity.LoginActivity;
+import com.jusenr.androidlibrary.widgets.scrollview.PTSlidingMenu;
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnMenuTabClickListener;
 
 import butterknife.BindView;
-import butterknife.OnClick;
 
 /**
  * Description:
@@ -39,17 +33,13 @@ import butterknife.OnClick;
  */
 public class MainActivity extends PTActivity {
 
+    @BindView(R.id.ptslidemenu_layout)
+    PTSlidingMenu mPTSlideMenu;
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
     @BindView(R.id.fl_content)
     FrameLayout mFlContent;
 
-    @BindView(R.id.sample_text)
-    TextView mSampleText;
-    @BindView(R.id.btn_login)
-    Button mBtnLogin;
-    @BindView(R.id.btn_profile)
-    Button mBtnProfile;
 
     private FragmentManager mFragmentManager = getFragmentManager();
     private Fragment mCurrentFragment;
@@ -69,20 +59,6 @@ public class MainActivity extends PTActivity {
     protected void onViewCreated(@Nullable Bundle savedInstanceState) {
         mBottomBar = BottomBar.attach(this, savedInstanceState);
         initViews();
-    }
-
-    @OnClick({R.id.sample_text, R.id.btn_login, R.id.btn_profile})
-    public void onViewClicked(View view) {
-        switch (view.getId()) {
-            case R.id.sample_text:
-                break;
-            case R.id.btn_login:
-                startActivity(new Intent(this, LoginActivity.class));
-                break;
-            case R.id.btn_profile:
-                startActivity(new Intent(this, ProfileActivity.class));
-                break;
-        }
     }
 
     @Override
@@ -109,14 +85,25 @@ public class MainActivity extends PTActivity {
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        mPTSlideMenu.requestLayout();
+    }
+
+    @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN) {
+            if (mPTSlideMenu.isOpen()) {
+                mPTSlideMenu.toggle(false);
+                return true;
+            }
             return exit(2000);
         }
         return super.onKeyDown(keyCode, event);
     }
 
     private void initViews() {
+        mPTSlideMenu.requestDisallowInterceptTouchEvent(true);
         setSupportActionBar(mToolbar);
 
         mBottomBar.setItems(R.menu.bottombar_menu);

@@ -22,7 +22,7 @@
             android:layout_weight="1"
             android:gravity="center_vertical"
             android:text="@string/upgrade"
-            android:textSize="@dimen/text_size_14"/>
+            android:textSize="14sp"/>
 
         <TextView
             android:id="@+id/tv_current_version"
@@ -50,7 +50,7 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:gravity="center_vertical"
-            android:paddingLeft="@dimen/dimen_10"
+            android:paddingLeft="10dp"
             android:text="@string/about_author"
             android:textSize="14sp"/>
 

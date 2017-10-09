@@ -93,4 +93,8 @@
         <attr name="headerVisibleHeight" format="dimension"/>
     </declare-styleable>
 
+    <declare-styleable name="PTSlidingMenu">
+        <attr name="rightPadding" format="dimension" />
+    </declare-styleable>
+
 </resources>
