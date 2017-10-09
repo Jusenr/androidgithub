@@ -1,5 +1,6 @@
 package com.jusenr.androidgithub.user.ui.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
@@ -8,6 +9,7 @@ import android.widget.ImageView;
 
 import com.jusenr.androidgithub.R;
 import com.jusenr.androidgithub.base.PTMVPActivity;
+import com.jusenr.androidgithub.home.MainActivity;
 import com.jusenr.androidgithub.user.contract.LoginContract;
 import com.jusenr.androidgithub.user.di.component.DaggerLoginComponent;
 import com.jusenr.androidgithub.user.di.module.LoginModule;
@@ -62,8 +64,7 @@ public class LoginActivity extends PTMVPActivity<LoginPresenter> implements Logi
         String username = AccountHelper.getUsername();
         if (!StringUtils.isEmpty(username)) {
             mEtUsername.setText(username);
-//            mEtPassword.setFocusable(true);
-            mEtPassword.setFocusableInTouchMode(true);
+            mEtPassword.requestFocus();
         }
     }
 
@@ -74,6 +75,7 @@ public class LoginActivity extends PTMVPActivity<LoginPresenter> implements Logi
             AccountHelper.saveAvatar(bean.getAvatar_url());
             Logger.i(bean.toString());
         }
+        startActivity(new Intent(getApplicationContext(), MainActivity.class));
         finish();
     }
 

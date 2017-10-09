@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="96dp"
         android:layout_marginBottom="10dp"
-        android:layout_marginTop="10dp"
+        android:background="@mipmap/header"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:padding="10dp">
@@ -104,6 +104,23 @@
             android:gravity="center_vertical"
             android:paddingLeft="10dp"
             android:text="Settings"
+            android:textColor="@color/md_white_1000"
+            android:textSize="14sp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@color/md_grey_300"/>
+
+        <TextView
+            android:id="@+id/tv_loginout"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:text="Loginout"
             android:textColor="@color/md_white_1000"
             android:textSize="14sp"/>
 

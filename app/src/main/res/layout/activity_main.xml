@@ -6,7 +6,7 @@
                                                             android:background="@color/md_grey_500"
                                                             android:fitsSystemWindows="false"
                                                             android:scrollbars="none"
-                                                            app:rightPadding="100dp">
+                                                            app:rightPadding="140dp">
 
     <LinearLayout
         android:layout_width="match_parent"
