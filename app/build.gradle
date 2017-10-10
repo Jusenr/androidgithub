@@ -8,8 +8,8 @@ android {
         applicationId "com.jusenr.androidgithub"
         minSdkVersion 19
         targetSdkVersion 26
-        versionCode 1
-        versionName rootProject.ext.VERSIONNAME
+        versionCode rootProject.ext.VERSIONCODE as int
+        versionName rootProject.getVersionName()
         manifestPlaceholders rootProject.ext.MANIFESTPLACEHOLDERS
         //语言环境和logcat日志TAG设置
         buildConfigField "String", "LOG_TAG", "\"${rootProject.ext.APP_LOG_TAG}\""
@@ -24,23 +24,23 @@ android {
             }
         }
     }
-//    signingConfigs {
-//        release {
-//            storeFile file("../keystore.jks")
-//            storePassword "ptpad123"
-//            keyAlias "ptpad"
-//            keyPassword "ptpad123"
-//        }
-//    }
+    signingConfigs {
+        release {
+            storeFile file("$rootDir/keystore.jks")
+            storePassword "github123"
+            keyAlias "githubapp"
+            keyPassword "github123"
+        }
+    }
     buildTypes {
         release {
             // 显示Log
             buildConfigField "boolean", "LOG_DEBUG", "false"
-            minifyEnabled true
-            shrinkResources true
+            minifyEnabled false
+            shrinkResources false
             zipAlignEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-//            signingConfig signingConfigs.release
+            signingConfig signingConfigs.release
         }
         debug {
             // 显示Log
@@ -48,7 +48,7 @@ android {
             minifyEnabled false
             shrinkResources false
             zipAlignEnabled true
-//            signingConfig signingConfigs.release
+            signingConfig signingConfigs.release
         }
     }
     externalNativeBuild {
@@ -69,7 +69,7 @@ android {
         abortOnError false
     }
     dexOptions {
-        javaMaxHeapSize "2g"
+        javaMaxHeapSize "4g"
     }
 
     //产品渠道配置
