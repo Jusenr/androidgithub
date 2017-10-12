@@ -43,9 +43,9 @@ public class Constants {
     }
 
     public static class ActionKey {
-        public static final String ACTION_REGISTER = "register";            //注册
-        public static final String ACTION_FORGET = "forget";                //忘记密码
-        public static final String ACTION_LOGIN = "login";                  //登录
+        public static final String ACTION_REPOS = "com.github.app.ACTION_REPOS";
+        public static final String ACTION_STARRED_REPOS = "com.github.app.ACTION_STARRED_REPOS";
+
         public static final String ACTION_CHANGEPHONE = "changephone";
         public static final String ACTION_CHECKOLDPHONE = "checkoldphone";
     }
@@ -59,7 +59,7 @@ public class Constants {
         public static final String PREFERENCE_KEY_NICKNAME = "nickname";
         public static final String PREFERENCE_KEY_AVATAR = "avatar";
         public static final String PREFERENCE_KEY_TOKEN_ID = "tokenId";
-        public static final String PREFERENCE_KEY_GENDER = "gender";
+        public static final String PREFERENCE_KEY_USER_INFO = "user_info";
         public static final String PREFERENCE_KEY_EXPIRE_TIME = "expire_tim";
         public static final String PREFERENCE_KEY_IS_FIRST = "is_first";
     }
@@ -78,6 +78,8 @@ public class Constants {
         public static final int PAGE_SIZE = 30;
         public static final String SORT_BY_STARS = "stars";
         public static final String ORDER_BY_DESC = "desc";
+        public static final String UPDATED ="updated";
+        public static final String ALL ="all";
 
         public static final String REQUEST_ACCEPT = "ACCEPT";
         public static final String REQUEST_REFUSE = "REFUSE";

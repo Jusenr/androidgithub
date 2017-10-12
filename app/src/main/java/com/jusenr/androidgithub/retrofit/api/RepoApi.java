@@ -1,5 +1,7 @@
 package com.jusenr.androidgithub.retrofit.api;
 
+import android.support.annotation.IntDef;
+
 import com.jusenr.androidgithub.home.model.model.Content;
 import com.jusenr.androidgithub.home.model.model.Repo;
 import com.jusenr.androidgithub.home.model.model.SearchResultResp;
@@ -22,6 +24,17 @@ import rx.Observable;
  * Created by mingjun on 16/7/18.
  */
 public interface RepoApi {
+    public int OWNER_REPOS = 1;
+    public int STARRED_REPOS = 2;
+    public int ORG_REPOS = 3;
+
+    @IntDef({
+            OWNER_REPOS,
+            STARRED_REPOS,
+            ORG_REPOS
+    })
+    @interface RepoType {
+    }
 
     @Headers("Cache-Control: public, max-age=600")
     @GET("search/repositories")

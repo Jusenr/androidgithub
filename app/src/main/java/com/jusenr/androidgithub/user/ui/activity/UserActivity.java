@@ -1,5 +1,6 @@
 package com.jusenr.androidgithub.user.ui.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
@@ -8,6 +9,7 @@ import android.view.View;
 
 import com.jusenr.androidgithub.R;
 import com.jusenr.androidgithub.base.PTMVPActivity;
+import com.jusenr.androidgithub.home.ui.activity.RepoListActivity;
 import com.jusenr.androidgithub.user.contract.UserContract;
 import com.jusenr.androidgithub.user.di.component.DaggerUserComponent;
 import com.jusenr.androidgithub.user.di.module.UserModule;
@@ -20,6 +22,9 @@ import com.jusenr.toolslibrary.utils.ToastUtils;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+
+import static com.jusenr.androidgithub.utils.Constants.ActionKey.ACTION_REPOS;
+import static com.jusenr.androidgithub.utils.Constants.ActionKey.ACTION_STARRED_REPOS;
 
 public class UserActivity extends PTMVPActivity<UserPresenter> implements UserContract.View {
 
@@ -81,10 +86,16 @@ public class UserActivity extends PTMVPActivity<UserPresenter> implements UserCo
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.repo_layout:
-//                RepoListActivity.launchToShowRepos(this, mUsername);
+             Intent intent = new Intent(this, RepoListActivity.class);
+                intent.putExtra(Constants.BundleKey.BUNDLE_USER_NAME, mUsername);
+                intent.setAction(Constants.ActionKey.ACTION_REPOS);
+                startActivity(intent);
                 break;
             case R.id.starred_layout:
-//                RepoListActivity.launchToShowStars(this, mUsername);
+                Intent intent1 = new Intent(this, RepoListActivity.class);
+                intent1.putExtra(Constants.BundleKey.BUNDLE_USER_NAME, mUsername);
+                intent1.setAction(Constants.ActionKey.ACTION_STARRED_REPOS);
+                startActivity(intent1);
                 break;
             case R.id.following_layout:
 //                UserListActivity.launchToShowFollowing(this, mUsername);

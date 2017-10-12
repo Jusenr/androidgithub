@@ -1,9 +1,7 @@
 package com.jusenr.androidgithub.home.ui.activity;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
@@ -19,8 +17,8 @@ import com.jusenr.androidgithub.home.model.model.Repo;
 import com.jusenr.androidgithub.home.presenter.SearchPresenter;
 import com.jusenr.androidgithub.home.ui.adapter.RepoListRecyclerAdapter;
 import com.jusenr.androidgithub.utils.InputMethodUtils;
-import com.jusenr.androidlibrary.widgets.recyclerView.HorizontalDividerItemDecoration;
 import com.jusenr.toolslibrary.log.logger.Logger;
+import com.jusenr.toolslibrary.utils.ListUtils;
 import com.jusenr.toolslibrary.utils.StringUtils;
 import com.jusenr.toolslibrary.utils.ToastUtils;
 import com.miguelcatalan.materialsearchview.MaterialSearchView;
@@ -73,7 +71,9 @@ public class SearchActivity extends PTMVPActivity<SearchPresenter> implements Se
 
     @Override
     public void searchRepoResult(ArrayList<Repo> repos) {
-        mAdapter.setNewData(repos);
+        if (!ListUtils.isEmpty(repos)) {
+            mAdapter.setNewData(repos);
+        }
     }
 
     @Override
@@ -131,13 +131,6 @@ public class SearchActivity extends PTMVPActivity<SearchPresenter> implements Se
 
         mAdapter = new RepoListRecyclerAdapter(null);
         mAdapter.setOnRecyclerViewItemClickListener(mItemtClickListener);
-
-        mRepoList.setLayoutManager(new LinearLayoutManager(this));
-        mRepoList.addItemDecoration(new HorizontalDividerItemDecoration
-                .Builder(this)
-                .color(Color.TRANSPARENT)
-                .size(getResources().getDimensionPixelSize(R.dimen.divider_height))
-                .build());
 
         mRepoList.setAdapter(mAdapter);
 

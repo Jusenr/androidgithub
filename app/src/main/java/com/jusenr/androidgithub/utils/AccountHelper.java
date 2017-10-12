@@ -2,6 +2,7 @@ package com.jusenr.androidgithub.utils;
 
 import com.alibaba.fastjson.JSONObject;
 import com.jusenr.androidgithub.realm.APPRealmMigration;
+import com.jusenr.androidgithub.user.model.model.UserModel;
 import com.jusenr.androidlibrary.commn.database.DBManager;
 import com.jusenr.toolslibrary.utils.PreferenceUtils;
 import com.jusenr.toolslibrary.utils.StringUtils;
@@ -210,5 +211,23 @@ public class AccountHelper {
      */
     public static void saveAvatar(String avatar) {
         PreferenceUtils.save(Constants.SPKey.PREFERENCE_KEY_AVATAR, avatar);
+    }
+
+    /**
+     * 获取当前用户信息
+     *
+     * @return 当前用户信息
+     */
+    public static UserModel getUserInfo() {
+        return PreferenceUtils.getValue(Constants.SPKey.PREFERENCE_KEY_USER_INFO, null);
+    }
+
+    /**
+     * 保存当前用户信息
+     *
+     * @param userModel
+     */
+    public static void saveUserInfo(UserModel userModel) {
+        PreferenceUtils.save(Constants.SPKey.PREFERENCE_KEY_USER_INFO, userModel);
     }
 }

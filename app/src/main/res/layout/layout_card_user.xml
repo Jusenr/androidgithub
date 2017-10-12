@@ -39,7 +39,7 @@
                 android:textColor="@color/white"
                 android:textSize="14sp"
                 android:textStyle="bold"
-                tools:text="123"/>
+                tools:text="@string/app_name"/>
 
             <TextView
                 android:id="@+id/tv_bio"
@@ -50,7 +50,7 @@
                 android:maxLines="3"
                 android:textColor="@color/white"
                 android:textSize="14sp"
-                tools:text="123"/>
+                tools:text="@string/app_name"/>
 
         </LinearLayout>
 
@@ -68,10 +68,11 @@
                 android:drawableLeft="@mipmap/ic_business_white_18dp"
                 android:drawablePadding="5dp"
                 android:gravity="start|center_vertical"
+                android:padding="3dp"
                 android:singleLine="true"
                 android:textColor="@color/white"
                 android:textSize="14sp"
-                tools:text="123"/>
+                tools:text="@string/app_name"/>
 
             <TextView
                 android:id="@+id/tv_location"
@@ -80,10 +81,11 @@
                 android:drawableLeft="@mipmap/ic_place_white_18dp"
                 android:drawablePadding="5dp"
                 android:gravity="start|center_vertical"
+                android:padding="3dp"
                 android:singleLine="true"
                 android:textColor="@color/white"
                 android:textSize="14sp"
-                tools:text="123"/>
+                tools:text="@string/app_name"/>
 
 
             <TextView
@@ -93,10 +95,11 @@
                 android:drawableLeft="@mipmap/ic_rss_feed_white_18dp"
                 android:drawablePadding="5dp"
                 android:gravity="start|center_vertical"
+                android:padding="3dp"
                 android:singleLine="true"
                 android:textColor="@color/white"
                 android:textSize="14sp"
-                tools:text="123"/>
+                tools:text="@string/app_name"/>
 
             <TextView
                 android:id="@+id/tv_email"
@@ -105,10 +108,11 @@
                 android:drawableLeft="@mipmap/ic_email_white_18dp"
                 android:drawablePadding="5dp"
                 android:gravity="start|center_vertical"
+                android:padding="3dp"
                 android:singleLine="true"
                 android:textColor="@color/white"
                 android:textSize="14sp"
-                tools:text="123"/>
+                tools:text="@string/app_name"/>
 
         </LinearLayout>
 

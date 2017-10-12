@@ -31,10 +31,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <android.support.v7.widget.RecyclerView
+        <com.jusenr.androidlibrary.widgets.recyclerView.BaseRecyclerView
             android:id="@+id/repo_list"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            app:divider_color="@color/divider_color"
+            app:row_divider="true"/>
 
     </FrameLayout>
 

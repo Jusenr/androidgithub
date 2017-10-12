@@ -83,6 +83,7 @@ public class LoginPresenter extends BasePresenter<LoginContract.View, LoginContr
                     public void onNext(JSONObject object) {
                         AccountHelper.login(object);
                         UserModel result = object.toJavaObject(UserModel.class);
+                        AccountHelper.saveUserInfo(result);
                         mView.loginResult(result);
                     }
                 }));

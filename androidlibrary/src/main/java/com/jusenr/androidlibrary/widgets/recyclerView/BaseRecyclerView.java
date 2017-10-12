@@ -26,7 +26,6 @@ public class BaseRecyclerView extends RecyclerView {
     private int spanCount;
     private boolean rowDivider;
     private boolean spanDivider;
-    private boolean inner;
     private int dividerWidth;
     private int dividerHeight;
     private int marginLeft, marginTop, marginRight, marginBottom;
@@ -55,14 +54,13 @@ public class BaseRecyclerView extends RecyclerView {
         rowDivider = array.getBoolean(R.styleable.BaseRecyclerView_row_divider, false);
         spanDivider = array.getBoolean(R.styleable.BaseRecyclerView_span_divider, false);
 
-        inner = array.getBoolean(R.styleable.BaseRecyclerView_inner, false);
         dividerWidth = (int) array.getDimension(R.styleable.BaseRecyclerView_divider_width, 1f);
         dividerHeight = (int) array.getDimension(R.styleable.BaseRecyclerView_divider_height, 1f);
         marginLeft = (int) array.getDimension(R.styleable.BaseRecyclerView_divider_marginLeft, 0f);
         marginRight = (int) array.getDimension(R.styleable.BaseRecyclerView_divider_marginRight, 0f);
         marginTop = (int) array.getDimension(R.styleable.BaseRecyclerView_divider_marginTop, 0f);
         marginBottom = (int) array.getDimension(R.styleable.BaseRecyclerView_divider_marginBottom, 0f);
-        dividerColor = array.getColor(R.styleable.BaseRecyclerView_divider_color, Color.parseColor("#00000000"));
+        dividerColor = array.getColor(R.styleable.BaseRecyclerView_divider_color, Color.TRANSPARENT);
         array.recycle();
     }
 
@@ -70,31 +68,16 @@ public class BaseRecyclerView extends RecyclerView {
         setOverScrollMode(OVER_SCROLL_NEVER);
         switch (layoutMode) {
             case BaseRecyclerView.HORIZONTAL:
-                if (!inner) {
-                    layoutManager = new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false);
-                } else {
-
-                }
+                layoutManager = new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false);
                 break;
             case BaseRecyclerView.VERTICAL:
-                if (!inner) {
-                    layoutManager = new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false);
-                } else {
-
-                }
+                layoutManager = new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false);
                 break;
             case BaseRecyclerView.INVALID_OFFSET:
-                if (!inner)
-                    layoutManager = new LinearLayoutManager(context, LinearLayoutManager.INVALID_OFFSET, false);
-                else {
-
-                }
+                layoutManager = new LinearLayoutManager(context, LinearLayoutManager.INVALID_OFFSET, false);
                 break;
             case BaseRecyclerView.GRID:
-                if (!inner) {
-                    layoutManager = new GridLayoutManager(context, spanCount);
-                } else {
-                }
+                layoutManager = new GridLayoutManager(context, spanCount);
                 break;
         }
         setLayoutManager(layoutManager);

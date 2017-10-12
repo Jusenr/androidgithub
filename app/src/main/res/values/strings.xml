@@ -26,6 +26,11 @@
     <string name="following">%1$s \'s following</string>
     <string name="followers">%1$s \'s followers</string>
 
+    <string name="my_repositories">My Repositories</string>
+    <string name="my_stars">my stars</string>
+    <string name="my_following">my following</string>
+    <string name="my_followers">my followers</string>
+
     <string name="about_us">About Us</string>
     <string name="about_us_github_com_v3">Api from Github Document \nhttps://developer.github.com/v3/</string>
     <string name="about_us_no_copyright">Copyright © 2017 Jusenr</string>
