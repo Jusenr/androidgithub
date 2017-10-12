@@ -24,9 +24,9 @@ import rx.Observable;
  * Created by mingjun on 16/7/18.
  */
 public interface RepoApi {
-    public int OWNER_REPOS = 1;
-    public int STARRED_REPOS = 2;
-    public int ORG_REPOS = 3;
+    int OWNER_REPOS = 1;
+    int STARRED_REPOS = 2;
+    int ORG_REPOS = 3;
 
     @IntDef({
             OWNER_REPOS,
@@ -38,15 +38,40 @@ public interface RepoApi {
 
     @Headers("Cache-Control: public, max-age=600")
     @GET("search/repositories")
-    Observable<SearchResultResp> searchRepo(@Header("Authorization") String authorization, @Query("q") String key, @Query("sort") String sort,
-                                            @Query("order") String order, @Query("page") int page,
+    Observable<SearchResultResp> searchRepo(@Header("Authorization") String authorization,
+                                            @Query("q") String key,
+                                            @Query("sort") String sort,
+                                            @Query("order") String order,
+                                            @Query("page") int page,
                                             @Query("per_page") int pageSize);
 
     @GET("/users/{user}")
-    Observable<UserModel> getSingleUser(@Header("Authorization") String authorization, @Path("user") String user);
+    Observable<UserModel> getSingleUser(@Header("Authorization") String authorization,
+                                        @Path("user") String user);
+
+    @GET("user/repos")
+    Observable<ArrayList<Repo>> getMyRepos(@Header("Authorization") String authorization,
+                                           @Query("sort") String sort,
+                                           @Query("type") String type);
+
+    @GET("users/{name}/repos")
+    Observable<ArrayList<Repo>> getUserRepos(@Header("Authorization") String authorization,
+                                             @Path("name") String user,
+                                             @Query("sort") String sort);
+
+    @GET("user/starred")
+    Observable<ArrayList<Repo>> getMyStarredRepos(@Header("Authorization") String authorization,
+                                                  @Query("sort") String sort);
+
+    @GET("users/{name}/starred")
+    Observable<ArrayList<Repo>> getUserStarredRepos(@Header("Authorization") String authorization,
+                                                    @Path("name") String user,
+                                                    @Query("sort") String sort);
 
     @GET("repos/{owner}/{name}")
-    Observable<Repo> get(@Header("Authorization") String authorization, @Path("owner") String owner, @Path("name") String repo);
+    Observable<Repo> get(@Header("Authorization") String authorization,
+                         @Path("owner") String owner,
+                         @Path("name") String repo);
 
 
     @GET("repos/{owner}/{name}/contributors")
@@ -60,18 +85,6 @@ public interface RepoApi {
     @GET("repos/{owner}/{name}/forks")
     Observable<ArrayList<Repo>> listForks(@Header("Authorization") String authorization, @Path("owner") String owner, @Path("name") String repo,
                                           @Query("sort") String sort);
-
-    @GET("user/repos")
-    Observable<ArrayList<Repo>> getMyRepos(@Header("Authorization") String authorization, @Query("sort") String sort, @Query("type") String type);
-
-    @GET("users/{name}/repos")
-    Observable<ArrayList<Repo>> getUserRepos(@Header("Authorization") String authorization, @Path("name") String user, @Query("sort") String sort);
-
-    @GET("user/starred")
-    Observable<ArrayList<Repo>> getMyStarredRepos(@Header("Authorization") String authorization, @Query("sort") String sort);
-
-    @GET("users/{name}/starred")
-    Observable<ArrayList<Repo>> getUserStarredRepos(@Header("Authorization") String authorization, @Path("name") String user, @Query("sort") String sort);
 
     @Headers("Content-Length: 0")
     @PUT("/user/starred/{owner}/{repo}")
