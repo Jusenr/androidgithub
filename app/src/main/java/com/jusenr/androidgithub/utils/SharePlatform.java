@@ -1,4 +1,4 @@
-package com.jusenr.androidgithub;
+package com.jusenr.androidgithub.utils;
 
 import android.content.Context;
 

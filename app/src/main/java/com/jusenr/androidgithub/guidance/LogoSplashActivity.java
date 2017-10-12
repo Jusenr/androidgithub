@@ -42,7 +42,7 @@ public class LogoSplashActivity extends PTActivity {
 
     @Override
     protected void onViewCreated(@Nullable Bundle savedInstanceState) {
-        Observable.timer(3000, TimeUnit.MILLISECONDS)
+        Observable.timer(2000, TimeUnit.MILLISECONDS)
                 .compose(this.<Long>bindUntilEvent(ActivityEvent.DESTROY))
                 .subscribeOn(Schedulers.computation())
                 .observeOn(AndroidSchedulers.mainThread())

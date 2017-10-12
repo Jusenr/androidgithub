@@ -16,7 +16,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.jusenr.androidgithub.R;
-import com.jusenr.androidgithub.SharePlatform;
+import com.jusenr.androidgithub.guidance.AboutUsActivity;
+import com.jusenr.androidgithub.utils.SharePlatform;
 import com.jusenr.androidgithub.base.PTActivity;
 import com.jusenr.androidgithub.home.ui.fragment.MineFragment;
 import com.jusenr.androidgithub.home.ui.fragment.MostStarFragment;
@@ -60,6 +61,8 @@ public class MainActivity extends PTActivity {
     TextView mTvFeedback;
     @BindView(R.id.tv_settings)
     TextView mTvSettings;
+    @BindView(R.id.tv_about_us)
+    TextView mTvAboutUs;
     @BindView(R.id.tv_loginout)
     TextView mTvLoginout;
 
@@ -129,7 +132,7 @@ public class MainActivity extends PTActivity {
         return super.onKeyDown(keyCode, event);
     }
 
-    @OnClick({R.id.account_view, R.id.tv_history, R.id.tv_share_app, R.id.tv_feedback, R.id.tv_settings, R.id.tv_loginout})
+    @OnClick({R.id.account_view, R.id.tv_history, R.id.tv_share_app, R.id.tv_feedback, R.id.tv_settings, R.id.tv_about_us, R.id.tv_loginout})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.account_view:
@@ -143,6 +146,9 @@ public class MainActivity extends PTActivity {
                 break;
             case R.id.tv_settings:
                 startActivity(new Intent(this, SettingsActivity.class));
+                break;
+            case R.id.tv_about_us:
+                startActivity(new Intent(this, AboutUsActivity.class));
                 break;
             case R.id.tv_loginout:
                 AccountHelper.logout();

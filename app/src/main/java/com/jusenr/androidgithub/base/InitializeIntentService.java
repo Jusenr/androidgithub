@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.support.annotation.Nullable;
 
 import com.jusenr.androidgithub.BuildConfig;
-import com.jusenr.androidgithub.SharePlatform;
+import com.jusenr.androidgithub.utils.SharePlatform;
 import com.umeng.analytics.MobclickAgent;
 
 /**

@@ -27,7 +27,7 @@ public abstract class PTActivity extends BaseActivity implements LoadView {
 
     private Unbinder unbinder;
 
-    private LoadingView mLoadingView;
+    public LoadingView mLoadingView;
 //    protected ILoadState loadState;
 //    protected PTLoading mPTLoading;
 //    protected PTToast mPTToast;

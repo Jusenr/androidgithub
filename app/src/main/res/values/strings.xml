@@ -26,4 +26,11 @@
     <string name="following">%1$s \'s following</string>
     <string name="followers">%1$s \'s followers</string>
 
+    <string name="about_us">About Us</string>
+    <string name="about_us_github_com_v3">Api from Github Document \nhttps://developer.github.com/v3/</string>
+    <string name="about_us_no_copyright">Copyright © 2017 Jusenr</string>
+    <string name="about_us_make_it_better">Welcome to fork/star/pull request to make it better</string>
+    <string name="about_us_source_link">Source Link \n https://github.com/Jusenr/androidgithubapp</string>
+    <string name="about_us_qrcode_create_failed">QRCode creation failed</string>
+
 </resources>

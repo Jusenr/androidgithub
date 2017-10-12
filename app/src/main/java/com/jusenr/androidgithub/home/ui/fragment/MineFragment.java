@@ -8,7 +8,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.jusenr.androidgithub.R;
-import com.jusenr.androidgithub.SharePlatform;
+import com.jusenr.androidgithub.utils.SharePlatform;
 import com.jusenr.androidgithub.base.PTFragment;
 import com.jusenr.androidgithub.user.SettingsActivity;
 import com.jusenr.androidgithub.utils.AccountHelper;

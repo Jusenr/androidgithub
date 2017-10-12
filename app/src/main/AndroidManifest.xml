@@ -47,6 +47,16 @@
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="jusenr"
+                    android:scheme="githubapp" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".user.ui.activity.LoginActivity"
@@ -65,6 +75,10 @@
             android:name=".home.ui.activity.SearchActivity"
             android:screenOrientation="portrait"
             android:theme="@style/MaterialDrawerTheme.Light.DarkToolbar"/>
+        <activity
+            android:name=".guidance.AboutUsActivity"
+            android:screenOrientation="portrait"/>
+
     </application>
 
 </manifest>

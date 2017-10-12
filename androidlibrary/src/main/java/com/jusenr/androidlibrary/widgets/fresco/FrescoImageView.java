@@ -74,7 +74,7 @@ public class FrescoImageView extends SimpleDraweeView {
     }
 
     public void setImageRes(int res) {
-        setImageURL("res://putao/" + res);
+        setImageURL("res://jusenr/" + res);
     }
 
     public void setImageFile(String filePath) {
