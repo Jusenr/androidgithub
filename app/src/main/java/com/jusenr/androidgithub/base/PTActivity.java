@@ -11,6 +11,7 @@ import com.jusenr.androidlibrary.base.loading.LoadingView;
 import com.jusenr.toolslibrary.utils.EventBusUtils;
 import com.jusenr.toolslibrary.utils.ToastUtils;
 import com.mikepenz.iconics.context.IconicsLayoutInflater;
+import com.umeng.analytics.MobclickAgent;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -65,12 +66,16 @@ public abstract class PTActivity extends BaseActivity implements LoadView {
     @Override
     protected void onResume() {
         super.onResume();
+        MobclickAgent.onResume(this);
+        MobclickAgent.onPageStart(getLocalClassName());
         isResume = true;
     }
 
     @Override
     protected void onPause() {
         super.onPause();
+        MobclickAgent.onPause(this);
+        MobclickAgent.onPageEnd(getLocalClassName());
         isResume = false;
     }
 
