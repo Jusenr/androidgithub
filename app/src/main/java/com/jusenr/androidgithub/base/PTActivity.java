@@ -20,14 +20,14 @@ import butterknife.Unbinder;
  */
 
 public abstract class PTActivity extends BaseActivity implements LoadView {
-
-    protected PTApplication mApplication;
-    protected boolean isResume;
     private long exitTime = 0;
-
     private Unbinder unbinder;
 
-    public LoadingView mLoadingView;
+    protected PTApplication mApplication;
+    protected Bundle mBundle;
+    protected boolean isResume;
+
+    protected LoadingView mLoadingView;
 //    protected ILoadState loadState;
 //    protected PTLoading mPTLoading;
 //    protected PTToast mPTToast;
@@ -41,6 +41,7 @@ public abstract class PTActivity extends BaseActivity implements LoadView {
         super.onCreate(savedInstanceState);
 
         mApplication = (PTApplication) getApplication();
+        mBundle = getIntent().getExtras() != null ? getIntent().getExtras() : new Bundle();
         unbinder = ButterKnife.bind(this);
         mLoadingView = new LoadingView(this, getLoadingMessage());
 //        loadState = (ILoadState) findViewById(R.id.load_state_view);

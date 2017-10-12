@@ -16,14 +16,16 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.jusenr.androidgithub.R;
-import com.jusenr.androidgithub.guidance.AboutUsActivity;
-import com.jusenr.androidgithub.utils.SharePlatform;
 import com.jusenr.androidgithub.base.PTActivity;
+import com.jusenr.androidgithub.guidance.AboutUsActivity;
 import com.jusenr.androidgithub.home.ui.fragment.MineFragment;
 import com.jusenr.androidgithub.home.ui.fragment.MostStarFragment;
 import com.jusenr.androidgithub.home.ui.fragment.TrendingContainerFragment;
 import com.jusenr.androidgithub.user.SettingsActivity;
+import com.jusenr.androidgithub.user.ui.activity.UserActivity;
 import com.jusenr.androidgithub.utils.AccountHelper;
+import com.jusenr.androidgithub.utils.Constants;
+import com.jusenr.androidgithub.utils.SharePlatform;
 import com.jusenr.androidlibrary.widgets.fresco.FrescoImageView;
 import com.jusenr.androidlibrary.widgets.scrollview.PTSlidingMenu;
 import com.jusenr.toolslibrary.utils.StringUtils;
@@ -70,7 +72,6 @@ public class MainActivity extends PTActivity {
     Toolbar mToolbar;
     @BindView(R.id.fl_content)
     FrameLayout mFlContent;
-
 
     private FragmentManager mFragmentManager = getFragmentManager();
     private Fragment mCurrentFragment;
@@ -136,6 +137,11 @@ public class MainActivity extends PTActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.account_view:
+                Intent intent = new Intent(this, UserActivity.class);
+                mBundle.clear();
+                mBundle.putSerializable(Constants.BundleKey.BUNDLE_USER_NAME, AccountHelper.getNickname());
+                intent.putExtras(mBundle);
+                startActivity(intent);
                 break;
             case R.id.tv_history:
                 break;

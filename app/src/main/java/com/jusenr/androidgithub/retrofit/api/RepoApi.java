@@ -29,6 +29,8 @@ public interface RepoApi {
                                             @Query("order") String order, @Query("page") int page,
                                             @Query("per_page") int pageSize);
 
+    @GET("/users/{user}")
+    Observable<UserModel> getSingleUser(@Header("Authorization") String authorization, @Path("user") String user);
 
     @GET("repos/{owner}/{name}")
     Observable<Repo> get(@Header("Authorization") String authorization, @Path("owner") String owner, @Path("name") String repo);
@@ -90,9 +92,6 @@ public interface RepoApi {
     @GET("/repos/{owner}/{repo}/contents/{path}")
     Observable<Content> contentDetailByRef(@Header("Authorization") String authorization, @Path("owner") String owner, @Path("repo") String repo,
                                            @Path("path") String path, @Query("ref") String ref);
-
-    @GET("/users/{user}")
-    Observable<UserModel> getSingleUser(@Header("Authorization") String authorization, @Path("user") String user);
 
     @GET("/users/{user}/following")
     Observable<ArrayList<UserModel>> getUserFollowing(@Header("Authorization") String authorization, @Path("user") String user);

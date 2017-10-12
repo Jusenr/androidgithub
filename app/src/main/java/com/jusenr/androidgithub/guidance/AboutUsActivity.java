@@ -105,7 +105,7 @@ public class AboutUsActivity extends PTActivity {
                         if (bitmap != null) {
                             mIvQrcode.setImageBitmap(bitmap);
                             mIvIcon.setVisibility(View.VISIBLE);
-                            mIvIcon.setImageRes(R.mipmap.ic_launcher_round);
+                            mIvIcon.setImageRes(R.mipmap.ic_launcher);
                         }
                     }
                 });

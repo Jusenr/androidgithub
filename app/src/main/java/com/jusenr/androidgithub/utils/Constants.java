@@ -24,23 +24,12 @@ public class Constants {
         public static final String PARAM_DATA = "data";                     //反馈内容(限制255字符以内)
         public static final String PARAM_CONTENT = "content";               //反馈内容(限制255字符以内)
 
-
-        public static final String PARAM_NICKNAME = "nickname";//昵称
-        public static final String PARAM_BIRTHDAY = "birthday";//生日
-        public static final String PARAM_GENDER = "gender";//性别
-        public static final String PARAM_EXT = "ext";//图片后缀(xxx.png-->png)
-        public static final String PARAM_EXTENSION = "extension";//图片后缀(xxx.png-->png)
-        public static final String PARAM_HASH = "hash";//图片哈希值
-        public static final String PARAM_WIDTH = "width";//图片宽
-        public static final String PARAM_HEIGHT = "height";//图片高
         public static final String PARAM_USER_NAME = "user_name";//用户名
         public static final String PARAM_UID_CHILDREN = "uid_children";//孩子cid
     }
 
     public static class BundleKey {
-        public static final String BUNDLE_TYPE = "type";//修改昵称类型 TYPE_UPDATE_CHILD_NICKNAME|TYPE_UPDATE_USER_NICKNAME
-        public static final String BUNDLE_CID = "cid";//孩子id
-        public static final String BUNDLE_CHILD_ACCOUNT_NAME = "account_name";//孩子账户名称
+        public static final String BUNDLE_USER_NAME = "extra_user_name";
 
         public static final String BUNDLE_ME = "me";//当前账号的家长信息
         public static final String BUNDLE_URL = "url";//H5-url

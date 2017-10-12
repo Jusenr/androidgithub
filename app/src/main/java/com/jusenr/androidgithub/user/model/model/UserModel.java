@@ -78,6 +78,10 @@ public class UserModel implements Serializable {
     private String updated_at;
     private String url;
 
+    //add
+    private String company;
+    private String location;
+
     public String getAvatar_url() {
         return avatar_url;
     }
@@ -350,6 +354,22 @@ public class UserModel implements Serializable {
         this.url = url;
     }
 
+    public String getCompany() {
+        return company;
+    }
+
+    public void setCompany(String company) {
+        this.company = company;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
     public static class PlanBean {
         /**
          * collaborators : 0.0
@@ -433,6 +453,8 @@ public class UserModel implements Serializable {
                 ", type='" + type + '\'' +
                 ", updated_at='" + updated_at + '\'' +
                 ", url='" + url + '\'' +
+                ", company='" + company + '\'' +
+                ", location='" + location + '\'' +
                 '}';
     }
 }
