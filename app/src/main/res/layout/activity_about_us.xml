@@ -13,15 +13,15 @@
         android:padding="10dp">
 
         <ImageView
-            android:layout_width="64dp"
-            android:layout_height="64dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:scaleType="centerCrop"
             android:src="@mipmap/ic_launcher"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="12dp"
             android:gravity="center_vertical"
             android:text="@string/about_us_github_com_v3"/>
 

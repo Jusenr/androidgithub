@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -67,6 +68,7 @@ public class AboutUsActivity extends PTActivity {
 
     @OnClick(R.id.tv_source_link)
     public void onViewClicked() {
+        mTvSourceLink.setMovementMethod(LinkMovementMethod.getInstance());
     }
 
     /**
@@ -105,7 +107,7 @@ public class AboutUsActivity extends PTActivity {
                         if (bitmap != null) {
                             mIvQrcode.setImageBitmap(bitmap);
                             mIvIcon.setVisibility(View.VISIBLE);
-                            mIvIcon.setImageRes(R.mipmap.ic_launcher);
+                            mIvIcon.setDefaultImage(getResources().getDrawable(R.drawable.logo_splash));
                         }
                     }
                 });

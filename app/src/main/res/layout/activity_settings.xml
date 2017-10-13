@@ -48,7 +48,9 @@
         <TextView
             android:id="@+id/tv_about_author"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="50dp"
+            android:drawableLeft="@mipmap/author"
+            android:drawablePadding="8dp"
             android:gravity="center_vertical"
             android:paddingLeft="10dp"
             android:text="@string/about_author"
@@ -67,7 +69,8 @@
             android:layout_height="60dp"
             android:gravity="center_vertical"
             android:text="@string/about"
-            android:textSize="14sp"/>
+            android:textSize="14sp"
+            android:visibility="gone"/>
 
     </LinearLayout>
 

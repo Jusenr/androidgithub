@@ -2,6 +2,7 @@ package com.jusenr.androidgithub.user;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.view.MenuItem;
 
 import com.jusenr.androidgithub.R;
 import com.jusenr.androidgithub.base.PTActivity;
@@ -31,6 +32,18 @@ public class ProfileActivity extends PTActivity {
     protected void onViewCreated(@Nullable Bundle savedInstanceState) {
         setTitle(R.string.profile);
 
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
