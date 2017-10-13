@@ -122,6 +122,14 @@ public class MainActivity extends PTActivity {
     }
 
     @Override
+    protected void onPause() {
+        super.onPause();
+        if (mPTSlideMenu.isOpen()) {
+            mPTSlideMenu.closeMenu();
+        }
+    }
+
+    @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN) {
             if (mPTSlideMenu.isOpen()) {

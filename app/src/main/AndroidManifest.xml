@@ -65,6 +65,7 @@
             android:screenOrientation="portrait"/>
         <activity
             android:name=".home.ui.activity.MainActivity"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/MaterialDrawerTheme.Light.DarkToolbar"/>
         <activity
