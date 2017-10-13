@@ -16,20 +16,17 @@ import com.jusenr.androidgithub.user.di.module.UserModule;
 import com.jusenr.androidgithub.user.model.model.UserModel;
 import com.jusenr.androidgithub.user.presenter.UserPresenter;
 import com.jusenr.androidgithub.utils.Constants;
-import com.jusenr.androidgithub.widgets.UserCard;
+import com.jusenr.androidgithub.widgets.UserCardView;
 import com.jusenr.toolslibrary.utils.StringUtils;
 import com.jusenr.toolslibrary.utils.ToastUtils;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 
-import static com.jusenr.androidgithub.utils.Constants.ActionKey.ACTION_REPOS;
-import static com.jusenr.androidgithub.utils.Constants.ActionKey.ACTION_STARRED_REPOS;
-
 public class UserActivity extends PTMVPActivity<UserPresenter> implements UserContract.View {
 
     @BindView(R.id.user_card)
-    UserCard mUserCard;
+    UserCardView mUserCardView;
 
     private String mUsername;
 
@@ -59,12 +56,16 @@ public class UserActivity extends PTMVPActivity<UserPresenter> implements UserCo
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        loadUser();
+        mUsername = getIntent().getStringExtra(Constants.BundleKey.BUNDLE_USER_NAME);
+        if (!TextUtils.isEmpty(mUsername)) {
+            setTitle(mUsername);
+            mPresenter.onUserInfo(mUsername);
+        }
     }
 
     @Override
     public void getUserinfoResult(UserModel bean) {
-        mUserCard.setUser(bean);
+        mUserCardView.setUser(bean);
     }
 
     @Override
@@ -86,7 +87,7 @@ public class UserActivity extends PTMVPActivity<UserPresenter> implements UserCo
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.repo_layout:
-             Intent intent = new Intent(this, RepoListActivity.class);
+                Intent intent = new Intent(this, RepoListActivity.class);
                 intent.putExtra(Constants.BundleKey.BUNDLE_USER_NAME, mUsername);
                 intent.setAction(Constants.ActionKey.ACTION_REPOS);
                 startActivity(intent);
@@ -104,14 +105,6 @@ public class UserActivity extends PTMVPActivity<UserPresenter> implements UserCo
             case R.id.followers_layout:
 //                UserListActivity.launchToShowFollowers(this, mUsername);
                 break;
-        }
-    }
-
-    private void loadUser() {
-        mUsername = getIntent().getStringExtra(Constants.BundleKey.BUNDLE_USER_NAME);
-        if (!TextUtils.isEmpty(mUsername)) {
-            setTitle(mUsername);
-            mPresenter.onUserInfo(mUsername);
         }
     }
 }

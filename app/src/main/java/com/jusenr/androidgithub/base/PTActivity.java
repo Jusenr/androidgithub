@@ -1,5 +1,6 @@
 package com.jusenr.androidgithub.base;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.LayoutInflaterCompat;
@@ -24,6 +25,7 @@ public abstract class PTActivity extends BaseActivity implements LoadView {
     private long exitTime = 0;
     private Unbinder unbinder;
 
+    protected Activity mActivity;
     protected PTApplication mApplication;
     protected Bundle mBundle;
     protected boolean isResume;
@@ -41,6 +43,7 @@ public abstract class PTActivity extends BaseActivity implements LoadView {
         LayoutInflaterCompat.setFactory(getLayoutInflater(), new IconicsLayoutInflater(getDelegate()));
         super.onCreate(savedInstanceState);
 
+        mActivity = this;
         mApplication = (PTApplication) getApplication();
         mBundle = getIntent().getExtras() != null ? getIntent().getExtras() : new Bundle();
         unbinder = ButterKnife.bind(this);

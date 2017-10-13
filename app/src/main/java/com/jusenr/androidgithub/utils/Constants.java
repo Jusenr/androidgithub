@@ -30,8 +30,9 @@ public class Constants {
 
     public static class BundleKey {
         public static final String BUNDLE_USER_NAME = "extra_user_name";
+        public static final String BUNDLE_OWNER = "extra_owner";
+        public static final String BUNDLE_REPO_NAME = "extra_repo_name";
 
-        public static final String BUNDLE_ME = "me";//当前账号的家长信息
         public static final String BUNDLE_URL = "url";//H5-url
         public static final String BUNDLE_TITLE = "title";//H5-标题
         public static final String BUNDLE_SHOWHEAD = "showhead";//H5-是否显示H5原生头部控件
@@ -78,8 +79,9 @@ public class Constants {
         public static final int PAGE_SIZE = 30;
         public static final String SORT_BY_STARS = "stars";
         public static final String ORDER_BY_DESC = "desc";
-        public static final String UPDATED ="updated";
-        public static final String ALL ="all";
+        public static final String UPDATED = "updated";
+        public static final String ALL = "all";
+        public static final String NEWEST = "newest";
 
         public static final String REQUEST_ACCEPT = "ACCEPT";
         public static final String REQUEST_REFUSE = "REFUSE";

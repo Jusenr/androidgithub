@@ -138,6 +138,7 @@ dependencies {
     compile 'com.roughike:bottom-bar:1.4.0.1'
     compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:v1.8.5'
     compile 'com.mikepenz:devicon-typeface:2.0.0.2@aar'
+    compile 'com.flyco.labelview:FlycoLabelView_Lib:1.0.2@aar'
     testCompile 'junit:junit:4.12'
     annotationProcessor 'com.google.dagger:dagger-compiler:2.10'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'

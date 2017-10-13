@@ -10,20 +10,16 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <com.jusenr.androidgithub.widgets.UserCard
+        <com.jusenr.androidgithub.widgets.UserCardView
             android:id="@+id/user_card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
         <LinearLayout
             android:id="@+id/repo_layout"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
+            style="@style/style_linear_layout"
             android:layout_marginTop="10dp"
-            android:background="@drawable/button_bg"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:paddingLeft="10dp">
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="match_parent"
@@ -35,13 +31,9 @@
 
         <LinearLayout
             android:id="@+id/starred_layout"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
+            style="@style/style_linear_layout"
             android:layout_marginTop="10dp"
-            android:background="@drawable/button_bg"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:paddingLeft="10dp">
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="match_parent"
@@ -53,13 +45,9 @@
 
         <LinearLayout
             android:id="@+id/following_layout"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
+            style="@style/style_linear_layout"
             android:layout_marginTop="10dp"
-            android:background="@drawable/button_bg"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:paddingLeft="10dp">
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="match_parent"
@@ -71,13 +59,9 @@
 
         <LinearLayout
             android:id="@+id/followers_layout"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
+            style="@style/style_linear_layout"
             android:layout_marginTop="10dp"
-            android:background="@drawable/button_bg"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:paddingLeft="10dp">
+            android:orientation="horizontal">
 
             <TextView
                 android:layout_width="match_parent"

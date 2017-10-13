@@ -73,7 +73,7 @@ public class AboutUsActivity extends PTActivity {
      * 生成孩子的二维码
      */
     private void createQRCode() {
-        final String code = "https://github.com/Jusenr/androidgithubapp";
+        final String code = "https://github.com/Jusenr/androidgithub";
         mLoadingView.show();
         Log.i("#####", "createQRCode: code=" + code);
         Observable.create(new Observable.OnSubscribe<Bitmap>() {

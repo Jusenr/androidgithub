@@ -1,10 +1,13 @@
 package com.jusenr.androidgithub.home.ui.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -16,6 +19,7 @@ import com.jusenr.androidgithub.home.di.module.SearchModule;
 import com.jusenr.androidgithub.home.model.model.Repo;
 import com.jusenr.androidgithub.home.presenter.SearchPresenter;
 import com.jusenr.androidgithub.home.ui.adapter.RepoListRecyclerAdapter;
+import com.jusenr.androidgithub.utils.Constants;
 import com.jusenr.androidgithub.utils.InputMethodUtils;
 import com.jusenr.toolslibrary.log.logger.Logger;
 import com.jusenr.toolslibrary.utils.ListUtils;
@@ -82,6 +86,23 @@ public class SearchActivity extends PTMVPActivity<SearchPresenter> implements Se
             ToastUtils.show(this, msg);
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        MenuItem item = menu.findItem(R.id.action_search);
+        mSearchView.setMenuItem(item);
+        return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (mSearchView.isSearchOpen()) {
+            mSearchView.closeSearch();
+        } else {
+            super.onBackPressed();
+        }
+    }
+
     private void initViews() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -142,7 +163,12 @@ public class SearchActivity extends PTMVPActivity<SearchPresenter> implements Se
         @Override
         public void onItemClick(View view, int position) {
             Repo repo = mAdapter.getItem(position);
-//            RepoDetailActivity.launch(SearchActivity.this, repo.getOwner().getLogin(), repo.getName());
+            if (repo != null) {
+                Intent intent = new Intent(mActivity, RepoDetailActivity.class);
+                intent.putExtra(Constants.BundleKey.BUNDLE_OWNER, repo.getOwner().getLogin());
+                intent.putExtra(Constants.BundleKey.BUNDLE_REPO_NAME, repo.getName());
+                startActivity(intent);
+            }
         }
     };
 

@@ -1,6 +1,7 @@
 package com.jusenr.androidgithub.home.ui.activity;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
@@ -109,7 +110,12 @@ public class RepoListActivity extends PTMVPActivity<RepoListPresenter> implement
         @Override
         public void onItemClick(View view, int position) {
             Repo repo = mAdapter.getItem(position);
-//            RepoDetailActivity.launch(SearchActivity.this, repo.getOwner().getLogin(), repo.getName());
+            if (repo != null) {
+                Intent intent = new Intent(mActivity, RepoDetailActivity.class);
+                intent.putExtra(Constants.BundleKey.BUNDLE_OWNER, repo.getOwner().getLogin());
+                intent.putExtra(Constants.BundleKey.BUNDLE_REPO_NAME, repo.getName());
+                startActivity(intent);
+            }
         }
     };
 }

@@ -73,28 +73,38 @@ public interface RepoApi {
                          @Path("owner") String owner,
                          @Path("name") String repo);
 
-
     @GET("repos/{owner}/{name}/contributors")
-    Observable<ArrayList<UserModel>> contributors(@Header("Authorization") String authorization, @Path("owner") String owner, @Path("name") String repo);
-
-
-    @GET("repos/{owner}/{name}/readme")
-    Observable<Content> readme(@Header("Authorization") String authorization, @Path("owner") String owner, @Path("name") String repo);
-
+    Observable<ArrayList<UserModel>> contributors(@Header("Authorization") String authorization,
+                                                  @Path("owner") String owner,
+                                                  @Path("name") String repo);
 
     @GET("repos/{owner}/{name}/forks")
-    Observable<ArrayList<Repo>> listForks(@Header("Authorization") String authorization, @Path("owner") String owner, @Path("name") String repo,
+    Observable<ArrayList<Repo>> listForks(@Header("Authorization") String authorization,
+                                          @Path("owner") String owner,
+                                          @Path("name") String repo,
                                           @Query("sort") String sort);
+
+    @GET("repos/{owner}/{name}/readme")
+    Observable<Content> readme(@Header("Authorization") String authorization,
+                               @Path("owner") String owner,
+                               @Path("name") String repo);
+
+    @GET("/user/starred/{owner}/{repo}")
+    Observable<Response<ResponseBody>> checkIfRepoIsStarred(@Header("Authorization") String authorization,
+                                                            @Path("owner") String owner,
+                                                            @Path("repo") String repo);
 
     @Headers("Content-Length: 0")
     @PUT("/user/starred/{owner}/{repo}")
-    Observable<Response<ResponseBody>> starRepo(@Header("Authorization") String authorization, @Path("owner") String owner, @Path("repo") String repo);
-
-    @GET("/user/starred/{owner}/{repo}")
-    Observable<Response<ResponseBody>> checkIfRepoIsStarred(@Header("Authorization") String authorization, @Path("owner") String owner, @Path("repo") String repo);
+    Observable<Response<ResponseBody>> starRepo(@Header("Authorization") String authorization,
+                                                @Path("owner") String owner,
+                                                @Path("repo") String repo);
 
     @DELETE("/user/starred/{owner}/{repo}")
-    Observable<Response<ResponseBody>> unstarRepo(@Header("Authorization") String authorization, @Path("owner") String owner, @Path("repo") String repo);
+    Observable<Response<ResponseBody>> unstarRepo(@Header("Authorization") String authorization,
+                                                  @Path("owner") String owner,
+                                                  @Path("repo") String repo);
+
 
     @GET("/repos/{owner}/{repo}/contents")
     Observable<ArrayList<Content>> contents(@Header("Authorization") String authorization, @Path("owner") String owner, @Path("repo") String repo);

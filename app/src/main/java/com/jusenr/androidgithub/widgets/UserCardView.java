@@ -18,7 +18,7 @@ import butterknife.ButterKnife;
 /**
  * Created by mingjun on 16/9/5.
  */
-public class UserCard extends FrameLayout {
+public class UserCardView extends FrameLayout {
 
     @BindView(R.id.iv_user_icon)
     FrescoImageView mUserIcon;
@@ -35,17 +35,17 @@ public class UserCard extends FrameLayout {
     @BindView(R.id.tv_email)
     TextView mEmail;
 
-    public UserCard(Context context) {
+    public UserCardView(Context context) {
         super(context);
         init();
     }
 
-    public UserCard(Context context, AttributeSet attrs) {
+    public UserCardView(Context context, AttributeSet attrs) {
         super(context, attrs);
         init();
     }
 
-    public UserCard(Context context, AttributeSet attrs, int defStyleAttr) {
+    public UserCardView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init();
     }

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/ll_root_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/md_white_1000"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.jusenr.androidgithub.widgets.RepoItemView
+                android:id="@+id/riv_repo_item_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/md_grey_300"
+                android:elevation="2dp"/>
+
+            <LinearLayout
+                android:id="@+id/ll_contributor_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    style="@style/style_linear_layout"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:text="{oct-organization} Contributors"/>
+
+                    <TextView
+                        android:id="@+id/contributors_count"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:gravity="center_vertical"/>
+
+                </LinearLayout>
+
+                <com.jusenr.androidlibrary.widgets.recyclerView.BaseRecyclerView
+                    android:id="@+id/rlv_contributor_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="2dp"
+                    app:columnCount="1"
+                    app:layoutMode="grid"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_fork_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    style="@style/style_linear_layout"
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:text="{oct-gist_fork} Forks"/>
+
+                    <TextView
+                        android:id="@+id/tv_forks_count"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:gravity="center_vertical"/>
+
+                </LinearLayout>
+
+                <com.jusenr.androidlibrary.widgets.recyclerView.BaseRecyclerView
+                    android:id="@+id/rlv_fork_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="2dp"
+                    app:columnCount="1"
+                    app:layoutMode="grid"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_code_layout"
+                style="@style/style_linear_layout"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_code_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:gravity="center_vertical"
+                    android:text="{oct-file_code} Code"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_readme_layout"
+                style="@style/style_linear_layout"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_readme_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:gravity="center_vertical"
+                    android:text="{oct-info} README"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>
