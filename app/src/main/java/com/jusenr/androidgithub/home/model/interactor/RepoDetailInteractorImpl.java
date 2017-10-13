@@ -9,7 +9,7 @@ import com.jusenr.androidgithub.retrofit.api.RepoApi;
 import com.jusenr.androidgithub.user.model.model.UserModel;
 import com.jusenr.androidgithub.utils.AccountHelper;
 import com.jusenr.androidgithub.utils.Constants;
-import com.jusenr.androidgithub.utils.StringUtil;
+import com.jusenr.androidgithub.utils.Utils;
 import com.jusenr.androidlibrary.di.scope.ActivityScope;
 
 import java.util.ArrayList;
@@ -72,7 +72,7 @@ public class RepoDetailInteractorImpl implements RepoDetailContract.Interactor {
                         detail.setForks(forks);
 
                         // because the readme content is encode with Base64 by github.
-                        readme.content = StringUtil.base64Decode(readme.content);
+                        readme.content = Utils.base64Decode(readme.content);
                         detail.setReadme(readme);
                         detail.setContributors(users);
                         return detail;

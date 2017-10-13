@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.flyco.labelview.LabelView;
 import com.jusenr.androidgithub.R;
 import com.jusenr.androidgithub.home.model.model.Repo;
+import com.jusenr.androidgithub.utils.Utils;
 import com.jusenr.androidlibrary.widgets.fresco.FrescoImageView;
 
 import butterknife.BindView;
@@ -80,9 +81,8 @@ public class RepoItemView extends FrameLayout {
             } else {
                 mLabelView.setVisibility(GONE);
             }
-
-            mUpdateTime.setText(repo.getUpdated_at());
-            mStarCount.setText(String.valueOf(repo.getStargazers_count()));
+            mUpdateTime.setText(Utils.formatDateGithub(repo.getUpdated_at()));
+            mStarCount.setText(Integer.toString(repo.getStargazers_count()));
 
             mStarIcon.setImageResource(repo.isStarred() ? R.mipmap.ic_star_selected : R.mipmap.ic_star);
         }

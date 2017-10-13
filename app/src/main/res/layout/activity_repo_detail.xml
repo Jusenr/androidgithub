@@ -55,10 +55,9 @@
                 <com.jusenr.androidlibrary.widgets.recyclerView.BaseRecyclerView
                     android:id="@+id/rlv_contributor_list"
                     android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:layout_marginTop="2dp"
-                    app:columnCount="1"
-                    app:layoutMode="grid"/>
+                    android:layout_height="50dp"
+                    android:layout_marginTop="3dp"
+                    app:layoutMode="horizontal"/>
 
             </LinearLayout>
 
@@ -91,10 +90,9 @@
                 <com.jusenr.androidlibrary.widgets.recyclerView.BaseRecyclerView
                     android:id="@+id/rlv_fork_list"
                     android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:layout_marginTop="2dp"
-                    app:columnCount="1"
-                    app:layoutMode="grid"/>
+                    android:layout_height="50dp"
+                    android:layout_marginTop="3dp"
+                    app:layoutMode="horizontal"/>
 
             </LinearLayout>
 

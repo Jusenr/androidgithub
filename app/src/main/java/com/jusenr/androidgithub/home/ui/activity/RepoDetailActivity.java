@@ -35,6 +35,8 @@ import butterknife.OnClick;
 
 public class RepoDetailActivity extends PTMVPActivity<RepoDetailPresenter> implements RepoDetailContract.View {
 
+    @BindView(R.id.ll_root_layout)
+    LinearLayout mLlRootLayout;
     @BindView(R.id.riv_repo_item_view)
     RepoItemView mRivRepoItemView;
     @BindView(R.id.contributors_count)
@@ -57,12 +59,12 @@ public class RepoDetailActivity extends PTMVPActivity<RepoDetailPresenter> imple
     TextView mTvReadmeLabel;
     @BindView(R.id.ll_readme_layout)
     LinearLayout mLlReadmeLayout;
-    private String mRepoName;
-    private String mOwner;
 
     private ForkUserListAdapter mForkUserAdapter;
     private ContributorListAdapter mContributorAdapter;
 
+    private String mRepoName;
+    private String mOwner;
     private RepoDetail mRepoDetail;
 
     @Override
@@ -102,6 +104,7 @@ public class RepoDetailActivity extends PTMVPActivity<RepoDetailPresenter> imple
 
     @Override
     public void loadRepoDetailsResult(RepoDetail detail) {
+        mLlRootLayout.setVisibility(View.VISIBLE);
         mRepoDetail = detail;
         mOwner = detail.getBaseRepo().getOwner().getLogin();
         mRepoName = detail.getBaseRepo().getName();
@@ -133,11 +136,15 @@ public class RepoDetailActivity extends PTMVPActivity<RepoDetailPresenter> imple
     @Override
     public void starRepoResult(boolean b) {
         Snackbar.make(mRivRepoItemView, b ? "Star Success" : "Star Failed", Snackbar.LENGTH_LONG).show();
+        if (b)
+            mPresenter.onLoadRepoDetails(mOwner, mRepoName);
     }
 
     @Override
     public void unstarRepoResult(boolean b) {
         Snackbar.make(mRivRepoItemView, b ? "UnStar Success" : "UnStar Failed", Snackbar.LENGTH_LONG).show();
+        if (b)
+            mPresenter.onLoadRepoDetails(mOwner, mRepoName);
     }
 
     @Override
@@ -162,6 +169,7 @@ public class RepoDetailActivity extends PTMVPActivity<RepoDetailPresenter> imple
     }
 
     private void initViews() {
+        mLlRootLayout.setVisibility(View.INVISIBLE);
         mContributorAdapter = new ContributorListAdapter(null);
         mContributorAdapter.setOnRecyclerViewItemClickListener(new BaseQuickAdapter.OnRecyclerViewItemClickListener() {
             @Override

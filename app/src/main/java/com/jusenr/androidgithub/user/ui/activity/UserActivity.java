@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.LinearLayout;
 
 import com.jusenr.androidgithub.R;
 import com.jusenr.androidgithub.base.PTMVPActivity;
@@ -25,6 +26,8 @@ import butterknife.OnClick;
 
 public class UserActivity extends PTMVPActivity<UserPresenter> implements UserContract.View {
 
+    @BindView(R.id.ll_root_layout)
+    LinearLayout mLlRootLayout;
     @BindView(R.id.user_card)
     UserCardView mUserCardView;
 
@@ -61,11 +64,15 @@ public class UserActivity extends PTMVPActivity<UserPresenter> implements UserCo
             setTitle(mUsername);
             mPresenter.onUserInfo(mUsername);
         }
+
+        mLlRootLayout.setVisibility(View.INVISIBLE);
     }
 
     @Override
     public void getUserinfoResult(UserModel bean) {
-        mUserCardView.setUser(bean);
+        mLlRootLayout.setVisibility(View.VISIBLE);
+        if (bean != null)
+            mUserCardView.setUser(bean);
     }
 
     @Override

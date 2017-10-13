@@ -4,7 +4,7 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.jusenr.androidgithub.R;
 import com.jusenr.androidgithub.home.model.model.Repo;
-import com.jusenr.androidgithub.utils.StringUtil;
+import com.jusenr.androidgithub.utils.Utils;
 
 import java.util.List;
 
@@ -19,7 +19,7 @@ public class RepoListRecyclerAdapter extends BaseQuickAdapter<Repo> {
 
     @Override
     protected void convert(BaseViewHolder holder, Repo repo) {
-        holder.setText(R.id.name, StringUtil.replaceAllBlank(repo.getName()));
-        holder.setText(R.id.desc, StringUtil.trimNewLine(repo.getDescription()));
+        holder.setText(R.id.name, Utils.replaceAllBlank(repo.getName()));
+        holder.setText(R.id.desc, Utils.trimNewLine(repo.getDescription()));
     }
 }
