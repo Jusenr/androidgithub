@@ -39,7 +39,7 @@
                 android:textColor="@color/white"
                 android:textSize="14sp"
                 android:textStyle="bold"
-                tools:text="@string/app_name"/>
+                tools:text="@string/current_app_name"/>
 
             <TextView
                 android:id="@+id/tv_bio"
@@ -50,7 +50,7 @@
                 android:maxLines="3"
                 android:textColor="@color/white"
                 android:textSize="14sp"
-                tools:text="@string/app_name"/>
+                tools:text="@string/current_app_name"/>
 
         </LinearLayout>
 
@@ -72,7 +72,7 @@
                 android:singleLine="true"
                 android:textColor="@color/white"
                 android:textSize="14sp"
-                tools:text="@string/app_name"/>
+                tools:text="@string/current_app_name"/>
 
             <TextView
                 android:id="@+id/tv_location"
@@ -85,7 +85,7 @@
                 android:singleLine="true"
                 android:textColor="@color/white"
                 android:textSize="14sp"
-                tools:text="@string/app_name"/>
+                tools:text="@string/current_app_name"/>
 
 
             <TextView
@@ -99,7 +99,7 @@
                 android:singleLine="true"
                 android:textColor="@color/white"
                 android:textSize="14sp"
-                tools:text="@string/app_name"/>
+                tools:text="@string/current_app_name"/>
 
             <TextView
                 android:id="@+id/tv_email"
@@ -112,7 +112,7 @@
                 android:singleLine="true"
                 android:textColor="@color/white"
                 android:textSize="14sp"
-                tools:text="@string/app_name"/>
+                tools:text="@string/current_app_name"/>
 
         </LinearLayout>
 

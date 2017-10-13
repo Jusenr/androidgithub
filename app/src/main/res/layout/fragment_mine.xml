@@ -8,30 +8,21 @@
     android:background="@color/md_grey_300"
     android:orientation="vertical">
 
-    <LinearLayout
-        android:id="@+id/account_view"
-        android:layout_width="match_parent"
-        android:layout_height="96dp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginTop="10dp"
-        android:background="@color/md_white_1000"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:padding="10dp">
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mine"/>
 
-        <com.jusenr.androidlibrary.widgets.fresco.FrescoImageView
-            android:id="@+id/iv_user_icon"
-            style="@style/image_circle"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:scaleType="centerCrop"
-            app:placeholderImage="@mipmap/ic_launcher"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/tv_username"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"/>
+            android:layout_centerInParent="true"
+            android:text="Mine"/>
 
-    </LinearLayout>
+    </RelativeLayout>
+
 </LinearLayout>

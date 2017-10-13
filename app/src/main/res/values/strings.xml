@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">androidgithub</string>
+    <string name="current_app_name">GitHubApp</string>
 
     <string name="exit_again">Press Back again to exit application.</string>
 

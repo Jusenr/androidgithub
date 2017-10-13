@@ -32,6 +32,7 @@ public class Constants {
         public static final String BUNDLE_USER_NAME = "extra_user_name";
         public static final String BUNDLE_OWNER = "extra_owner";
         public static final String BUNDLE_REPO_NAME = "extra_repo_name";
+        public static final String BUNDLE_README = "extra_readme";
 
         public static final String BUNDLE_URL = "url";//H5-url
         public static final String BUNDLE_TITLE = "title";//H5-标题

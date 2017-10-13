@@ -163,7 +163,9 @@ public class RepoDetailActivity extends PTMVPActivity<RepoDetailPresenter> imple
 //                RepoTreeActivity.launch(this, mOwner, mRepoName);
                 break;
             case R.id.ll_readme_layout:
-//                ReadmeActivity.launch(this, mRepoDetail.getReadme());
+                Intent intent = new Intent(mActivity, ReadmeActivity.class);
+                intent.putExtra(Constants.BundleKey.BUNDLE_README, mRepoDetail.getReadme());
+                startActivity(intent);
                 break;
         }
     }
