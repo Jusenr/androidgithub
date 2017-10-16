@@ -47,8 +47,8 @@ ext {
     APP_LOG_TAG = "github_app"//app打印日志的tag
 
     VERSIONNAME = "1.0.0"
-    VERSIONCODE = 2
-    VERSION_NUM = 2 //内部测试使用的小版本号
+    VERSIONCODE = 3
+    VERSION_NUM = 3 //内部测试使用的小版本号
 
     MANIFESTPLACEHOLDERS = [UMENG_APPKEY_VALUE: "59df4725aed179510f0004fd"]
 }
