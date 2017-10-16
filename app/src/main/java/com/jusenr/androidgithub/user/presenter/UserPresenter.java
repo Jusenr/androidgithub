@@ -1,5 +1,6 @@
 package com.jusenr.androidgithub.user.presenter;
 
+import com.jusenr.androidgithub.retrofit.subscriber.Subscriber0;
 import com.jusenr.androidgithub.user.contract.UserContract;
 import com.jusenr.androidgithub.user.model.model.UserModel;
 import com.jusenr.androidlibrary.base.BasePresenter;
@@ -7,7 +8,6 @@ import com.jusenr.androidlibrary.di.scope.ActivityScope;
 
 import javax.inject.Inject;
 
-import rx.Subscriber;
 import rx.functions.Action0;
 
 @ActivityScope
@@ -32,20 +32,20 @@ public class UserPresenter extends BasePresenter<UserContract.View, UserContract
                         mView.dismissLoading();
                     }
                 })
-                .subscribe(new Subscriber<UserModel>() {
+                .subscribe(new Subscriber0<UserModel>() {
                     @Override
                     public void onCompleted() {
 
                     }
 
                     @Override
-                    public void onError(Throwable e) {
-                        mView.getUserinfoFailed(-1, e.getMessage());
+                    public void onNext(String msg, UserModel userModel) {
+                        mView.getUserinfoResult(userModel);
                     }
 
                     @Override
-                    public void onNext(UserModel model) {
-                        mView.getUserinfoResult(model);
+                    public void onError(int code, String msg) {
+                        mView.getUserinfoFailed(code, msg);
                     }
                 }));
     }

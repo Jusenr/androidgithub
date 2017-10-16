@@ -2,6 +2,7 @@ package com.jusenr.androidgithub.home.presenter;
 
 import com.jusenr.androidgithub.home.contract.RepoTreeContract;
 import com.jusenr.androidgithub.home.model.model.Content;
+import com.jusenr.androidgithub.retrofit.subscriber.Subscriber0;
 import com.jusenr.androidlibrary.base.BasePresenter;
 import com.jusenr.androidlibrary.di.scope.ActivityScope;
 
@@ -9,7 +10,6 @@ import java.util.ArrayList;
 
 import javax.inject.Inject;
 
-import rx.Subscriber;
 import rx.functions.Action0;
 
 @ActivityScope
@@ -34,7 +34,7 @@ public class RepoTreePresenter extends BasePresenter<RepoTreeContract.View, Repo
                         mView.dismissLoading();
                     }
                 })
-                .subscribe(new Subscriber<ArrayList<Content>>() {
+                .subscribe(new Subscriber0<ArrayList<Content>>() {
 
                     @Override
                     public void onCompleted() {
@@ -42,13 +42,13 @@ public class RepoTreePresenter extends BasePresenter<RepoTreeContract.View, Repo
                     }
 
                     @Override
-                    public void onError(Throwable e) {
-                        mView.repoContentsFailed(-1, e.getMessage());
+                    public void onNext(String msg, ArrayList<Content> contents) {
+                        mView.repoContentsResult(contents);
                     }
 
                     @Override
-                    public void onNext(ArrayList<Content> contents) {
-                        mView.repoContentsResult(contents);
+                    public void onError(int code, String msg) {
+                        mView.repoContentsFailed(code, msg);
                     }
                 }));
     }

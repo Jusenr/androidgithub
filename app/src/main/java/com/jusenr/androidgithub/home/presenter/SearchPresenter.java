@@ -3,6 +3,7 @@ package com.jusenr.androidgithub.home.presenter;
 
 import com.jusenr.androidgithub.home.contract.SearchContract;
 import com.jusenr.androidgithub.home.model.model.Repo;
+import com.jusenr.androidgithub.retrofit.subscriber.Subscriber0;
 import com.jusenr.androidlibrary.base.BasePresenter;
 import com.jusenr.androidlibrary.di.scope.ActivityScope;
 
@@ -10,7 +11,6 @@ import java.util.ArrayList;
 
 import javax.inject.Inject;
 
-import rx.Subscriber;
 import rx.functions.Action0;
 
 @ActivityScope
@@ -35,20 +35,20 @@ public class SearchPresenter extends BasePresenter<SearchContract.View, SearchCo
                         mView.dismissLoading();
                     }
                 })
-                .subscribe(new Subscriber<ArrayList<Repo>>() {
+                .subscribe(new Subscriber0<ArrayList<Repo>>() {
                     @Override
                     public void onCompleted() {
 
                     }
 
                     @Override
-                    public void onError(Throwable e) {
-                        mView.searchRepoFailed(-1, e.getMessage());
+                    public void onNext(String msg, ArrayList<Repo> repos) {
+                        mView.searchRepoResult(repos);
                     }
 
                     @Override
-                    public void onNext(ArrayList<Repo> repos) {
-                        mView.searchRepoResult(repos);
+                    public void onError(int code, String msg) {
+                        mView.searchRepoFailed(code, msg);
                     }
                 }));
     }

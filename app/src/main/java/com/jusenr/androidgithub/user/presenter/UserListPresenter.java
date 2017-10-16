@@ -1,6 +1,7 @@
 package com.jusenr.androidgithub.user.presenter;
 
 import com.jusenr.androidgithub.retrofit.api.RepoApi;
+import com.jusenr.androidgithub.retrofit.subscriber.Subscriber0;
 import com.jusenr.androidgithub.user.contract.UserListContract;
 import com.jusenr.androidgithub.user.model.model.UserModel;
 import com.jusenr.androidlibrary.base.BasePresenter;
@@ -10,7 +11,6 @@ import java.util.ArrayList;
 
 import javax.inject.Inject;
 
-import rx.Subscriber;
 import rx.functions.Action0;
 
 @ActivityScope
@@ -35,20 +35,20 @@ public class UserListPresenter extends BasePresenter<UserListContract.View, User
                         mView.dismissLoading();
                     }
                 })
-                .subscribe(new Subscriber<ArrayList<UserModel>>() {
+                .subscribe(new Subscriber0<ArrayList<UserModel>>() {
                     @Override
                     public void onCompleted() {
 
                     }
 
                     @Override
-                    public void onError(Throwable e) {
-                        mView.loadUsersFailed(-1, e.getMessage());
+                    public void onNext(String msg, ArrayList<UserModel> userModels) {
+                        mView.loadUsersResult(userModels);
                     }
 
                     @Override
-                    public void onNext(ArrayList<UserModel> repos) {
-                        mView.loadUsersResult(repos);
+                    public void onError(int code, String msg) {
+                        mView.loadUsersFailed(code, msg);
                     }
                 }));
     }

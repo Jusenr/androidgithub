@@ -2,13 +2,15 @@ package com.jusenr.androidgithub.home.presenter;
 
 import com.jusenr.androidgithub.home.contract.RepoDetailContract;
 import com.jusenr.androidgithub.home.model.model.RepoDetail;
+import com.jusenr.androidgithub.retrofit.subscriber.Subscriber0;
 import com.jusenr.androidlibrary.base.BasePresenter;
 import com.jusenr.androidlibrary.di.scope.ActivityScope;
 
 import javax.inject.Inject;
 
-import rx.Subscriber;
 import rx.functions.Action0;
+
+import static com.umeng.analytics.pro.bs.b;
 
 @ActivityScope
 public class RepoDetailPresenter extends BasePresenter<RepoDetailContract.View, RepoDetailContract.Interactor> {
@@ -32,20 +34,20 @@ public class RepoDetailPresenter extends BasePresenter<RepoDetailContract.View, 
                         mView.dismissLoading();
                     }
                 })
-                .subscribe(new Subscriber<RepoDetail>() {
+                .subscribe(new Subscriber0<RepoDetail>() {
                     @Override
                     public void onCompleted() {
 
                     }
 
                     @Override
-                    public void onError(Throwable e) {
-                        mView.loadRepoDetailsFailed(-1, e.getMessage());
+                    public void onNext(String msg, RepoDetail repoDetail) {
+                        mView.loadRepoDetailsResult(repoDetail);
                     }
 
                     @Override
-                    public void onNext(RepoDetail repoDetail) {
-                        mView.loadRepoDetailsResult(repoDetail);
+                    public void onError(int code, String msg) {
+                        mView.loadRepoDetailsFailed(code, msg);
                     }
                 })
         );
@@ -65,20 +67,20 @@ public class RepoDetailPresenter extends BasePresenter<RepoDetailContract.View, 
                         mView.dismissLoading();
                     }
                 })
-                .subscribe(new Subscriber<Boolean>() {
+                .subscribe(new Subscriber0<Boolean>() {
                     @Override
                     public void onCompleted() {
 
                     }
 
                     @Override
-                    public void onError(Throwable e) {
-                        mView.starRepoResult(false);
+                    public void onNext(String msg, Boolean aBoolean) {
+                        mView.starRepoResult(aBoolean);
                     }
 
                     @Override
-                    public void onNext(Boolean b) {
-                        mView.starRepoResult(b);
+                    public void onError(int code, String msg) {
+                        mView.starRepoResult(false);
                     }
                 })
         );
@@ -98,20 +100,20 @@ public class RepoDetailPresenter extends BasePresenter<RepoDetailContract.View, 
                         mView.dismissLoading();
                     }
                 })
-                .subscribe(new Subscriber<Boolean>() {
+                .subscribe(new Subscriber0<Boolean>() {
                     @Override
                     public void onCompleted() {
 
                     }
 
                     @Override
-                    public void onError(Throwable e) {
-                        mView.unstarRepoResult(false);
+                    public void onNext(String msg, Boolean aBoolean) {
+                        mView.unstarRepoResult(aBoolean);
                     }
 
                     @Override
-                    public void onNext(Boolean b) {
-                        mView.unstarRepoResult(b);
+                    public void onError(int code, String msg) {
+                        mView.unstarRepoResult(false);
                     }
                 })
         );
