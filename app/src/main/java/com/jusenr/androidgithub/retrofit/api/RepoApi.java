@@ -24,6 +24,22 @@ import rx.Observable;
  * Created by mingjun on 16/7/18.
  */
 public interface RepoApi {
+    int TYPE_ANDROID = 1;
+    int TYPE_IOS = 2;
+    int TYPE_WEB = 3;
+    int TYPE_PYTHON = 4;
+    int TYPE_PHP = 5;
+
+    @IntDef({
+            TYPE_ANDROID,
+            TYPE_IOS,
+            TYPE_WEB,
+            TYPE_PYTHON,
+            TYPE_PHP
+    })
+    @interface MostStarsType {
+    }
+
     int OWNER_REPOS = 1;
     int STARRED_REPOS = 2;
     int ORG_REPOS = 3;

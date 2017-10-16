@@ -25,11 +25,6 @@ public class TrendingContainerFragment extends PTFragment {
     }
 
     @Override
-    public String getLoadingMessage() {
-        return null;
-    }
-
-    @Override
     public void onViewCreateFinish(View view, @Nullable Bundle savedInstanceState) {
 
     }

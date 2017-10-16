@@ -1,5 +1,6 @@
 package com.jusenr.androidgithub.base;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -21,9 +22,11 @@ import butterknife.Unbinder;
 public abstract class PTFragment extends BaseFragment implements LoadView {
 
     protected PTApplication mApplication;
+    protected Activity mActivity;
+
     private Unbinder unbinder;
 
-    private LoadingView mLoadingView;
+    protected LoadingView mLoadingView;
 //    protected ILoadState loadState;
 
     @Nullable
@@ -36,6 +39,7 @@ public abstract class PTFragment extends BaseFragment implements LoadView {
     public final void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mApplication = (PTApplication) getActivity().getApplication();
+        mActivity = getActivity();
         unbinder = ButterKnife.bind(this, view);
         mLoadingView = new LoadingView(getActivity(), getLoadingMessage());
 //        loadState = (ILoadState) view.findViewById(R.id.load_state_view);
@@ -44,7 +48,9 @@ public abstract class PTFragment extends BaseFragment implements LoadView {
         onViewCreateFinish(view, savedInstanceState);
     }
 
-    public abstract String getLoadingMessage();
+    public String getLoadingMessage() {
+        return null;
+    }
 
     public abstract void onViewCreateFinish(View view, @Nullable Bundle savedInstanceState);
 

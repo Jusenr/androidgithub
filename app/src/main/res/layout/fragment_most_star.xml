@@ -1,25 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:background="@color/md_grey_200"
-              android:orientation="vertical">
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <Button
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/refresh_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.jusenr.androidlibrary.widgets.recyclerView.BaseRecyclerView
+            android:id="@+id/brv_repo_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            app:divider_color="@color/divider_color"
+            app:row_divider="true"/>
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+    <com.github.clans.fab.FloatingActionMenu
+        android:id="@+id/fab_menu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="MostStar"/>
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="10dp">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <TextView
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/fab_repo_android"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="MostStar"/>
+            app:fab_label="Android"/>
 
-    </RelativeLayout>
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/fab_repo_ios"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_label="iOS"/>
 
-</LinearLayout>
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/fab_repo_python"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_label="Python"/>
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/fab_repo_web"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_label="Web"/>
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/fab_repo_php"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_label="PHP"/>
+
+    </com.github.clans.fab.FloatingActionMenu>
+
+</RelativeLayout>
