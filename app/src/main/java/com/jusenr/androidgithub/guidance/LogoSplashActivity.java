@@ -36,11 +36,6 @@ public class LogoSplashActivity extends PTActivity {
     }
 
     @Override
-    public String getLoadingMessage() {
-        return null;
-    }
-
-    @Override
     protected void onViewCreated(@Nullable Bundle savedInstanceState) {
         Observable.timer(2000, TimeUnit.MILLISECONDS)
                 .compose(this.<Long>bindUntilEvent(ActivityEvent.DESTROY))

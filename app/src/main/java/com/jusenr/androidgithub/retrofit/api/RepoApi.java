@@ -36,6 +36,16 @@ public interface RepoApi {
     @interface RepoType {
     }
 
+    int FOLLOWING = 1;
+    int FOLLOWER = 2;
+
+    @IntDef({
+            FOLLOWING,
+            FOLLOWER
+    })
+    @interface UserType {
+    }
+
     @Headers("Cache-Control: public, max-age=600")
     @GET("search/repositories")
     Observable<SearchResultResp> searchRepo(@Header("Authorization") String authorization,
@@ -94,6 +104,21 @@ public interface RepoApi {
                                                             @Path("owner") String owner,
                                                             @Path("repo") String repo);
 
+    @GET("/users/{user}/following")
+    Observable<ArrayList<UserModel>> getUserFollowing(@Header("Authorization") String authorization,
+                                                      @Path("user") String user);
+
+    @GET("/user/following")
+    Observable<ArrayList<UserModel>> getMyFollowing(@Header("Authorization") String authorization);
+
+    @GET("/users/{user}/followers")
+    Observable<ArrayList<UserModel>> getUserFollowers(@Header("Authorization") String authorization,
+                                                      @Path("user") String user);
+
+    @GET("/user/followers")
+    Observable<ArrayList<UserModel>> getMyFollowers(@Header("Authorization") String authorization);
+
+
     @Headers("Content-Length: 0")
     @PUT("/user/starred/{owner}/{repo}")
     Observable<Response<ResponseBody>> starRepo(@Header("Authorization") String authorization,
@@ -129,15 +154,4 @@ public interface RepoApi {
     Observable<Content> contentDetailByRef(@Header("Authorization") String authorization, @Path("owner") String owner, @Path("repo") String repo,
                                            @Path("path") String path, @Query("ref") String ref);
 
-    @GET("/users/{user}/following")
-    Observable<ArrayList<UserModel>> getUserFollowing(@Header("Authorization") String authorization, @Path("user") String user);
-
-    @GET("/user/following")
-    Observable<ArrayList<UserModel>> getMyFollowing(@Header("Authorization") String authorization);
-
-    @GET("/users/{user}/followers")
-    Observable<ArrayList<UserModel>> getUserFollowers(@Header("Authorization") String authorization, @Path("user") String user);
-
-    @GET("/user/followers")
-    Observable<ArrayList<UserModel>> getMyFollowers(@Header("Authorization") String authorization);
 }

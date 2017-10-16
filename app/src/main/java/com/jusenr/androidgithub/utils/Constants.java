@@ -16,16 +16,12 @@ public class Constants {
         public static final String PARAM_APPID = "appid";                   //平台ID
         public static final String PARAM_DEVICE_ID = "device_id";           //设备id(IMEI)
         public static final String PARAM_CLIENT_TYPE = "client_type";       //设备类型(1:ios,2:andriod,3:wp,4:other)
-        public static final String PARAM_PLATFORM_ID = "platform_id";       //平台(putao:1)
-        public static final String PARAM_REFRESH_TOKEN = "refresh_token";   //刷新用的token
         public static final String PARAM_VERSION = "version";               //version
         public static final String PARAM_DEVICE_NAME = "device_name";       //设备名称(型号)
 
         public static final String PARAM_DATA = "data";                     //反馈内容(限制255字符以内)
         public static final String PARAM_CONTENT = "content";               //反馈内容(限制255字符以内)
 
-        public static final String PARAM_USER_NAME = "user_name";//用户名
-        public static final String PARAM_UID_CHILDREN = "uid_children";//孩子cid
     }
 
     public static class BundleKey {
@@ -36,7 +32,6 @@ public class Constants {
 
         public static final String BUNDLE_URL = "url";//H5-url
         public static final String BUNDLE_TITLE = "title";//H5-标题
-        public static final String BUNDLE_SHOWHEAD = "showhead";//H5-是否显示H5原生头部控件
     }
 
     public static class TypeKey {
@@ -48,8 +43,8 @@ public class Constants {
         public static final String ACTION_REPOS = "com.github.app.ACTION_REPOS";
         public static final String ACTION_STARRED_REPOS = "com.github.app.ACTION_STARRED_REPOS";
 
-        public static final String ACTION_CHANGEPHONE = "changephone";
-        public static final String ACTION_CHECKOLDPHONE = "checkoldphone";
+        public static final String ACTION_FOLLOWING = "com.github.app.ACTION_FOLLOWING";
+        public static final String ACTION_FOLLOWERS = "com.github.app.ACTION_FOLLOWERS";
     }
 
     public static class SPKey {
@@ -72,11 +67,11 @@ public class Constants {
         public static final String EVENT_CHILD_SIGN_IN = "event_child_sign_in"; //孩子登录平板
         public static final String EVENT_CHILD_SIGN_OUT = "event_child_sign_out"; //孩子退出平板登录
         public static final String APP_UPDATE = "event_app_update"; //版本更新
-        public static final String EVENT_IM_TIMEOUT = "event_im_timeout"; //二级页面IM超时
     }
 
     public static class Value {
         // page size
+        public static final String AUTHOR = "Jusenr";
         public static final int PAGE_SIZE = 30;
         public static final String SORT_BY_STARS = "stars";
         public static final String ORDER_BY_DESC = "desc";
@@ -84,10 +79,6 @@ public class Constants {
         public static final String ALL = "all";
         public static final String NEWEST = "newest";
 
-        public static final String REQUEST_ACCEPT = "ACCEPT";
-        public static final String REQUEST_REFUSE = "REFUSE";
-        public static final String REQUEST_RESET_PWD_ACCEPT = "1";
-        public static final String REQUEST_RESET_PWD_REFUSE = "0";
         public static final String SCHEME_HTTP = "http";
         public static final String SCHEME_HTTPS = "https";
     }

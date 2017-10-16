@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
-import android.view.MenuItem;
 import android.view.View;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -50,16 +49,8 @@ public class RepoListActivity extends PTMVPActivity<RepoListPresenter> implement
     }
 
     @Override
-    public String getLoadingMessage() {
-        return null;
-    }
-
-    @Override
     protected void onViewCreated(@Nullable Bundle savedInstanceState) {
         super.onViewCreated(savedInstanceState);
-
-        getSupportActionBar().setHomeButtonEnabled(true);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         initViews();
 
@@ -88,15 +79,6 @@ public class RepoListActivity extends PTMVPActivity<RepoListPresenter> implement
     public void loadReposFailed(int code, String msg) {
         if (!StringUtils.isEmpty(msg))
             ToastUtils.show(this, msg);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            onBackPressed();
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
     }
 
     private void initViews() {

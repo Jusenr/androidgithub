@@ -1,13 +1,11 @@
 package com.jusenr.androidgithub.guidance;
 
-import android.app.Activity;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.method.LinkMovementMethod;
 import android.text.util.Linkify;
 import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
@@ -37,26 +35,14 @@ public class AboutUsActivity extends PTActivity {
     @BindView(R.id.tv_source_link)
     TextView mTvSourceLink;
 
-    private Activity mActivity;
-
     @Override
     protected int getLayoutId() {
         return R.layout.activity_about_us;
     }
 
     @Override
-    public String getLoadingMessage() {
-        return null;
-    }
-
-    @Override
     protected void onViewCreated(@Nullable Bundle savedInstanceState) {
-        mActivity = this;
-
         setTitle(R.string.about_us);
-
-        getSupportActionBar().setHomeButtonEnabled(true);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         //超链接相关字符识别
         mTvApi.setAutoLinkMask(Linkify.ALL);
@@ -67,20 +53,10 @@ public class AboutUsActivity extends PTActivity {
         createQRCode();
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            onBackPressed();
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
     /**
      * 生成孩子的二维码
      */
     private void createQRCode() {
-
         mLoadingView.show();
         Log.i("#####", "createQRCode: code=" + code);
         Observable.create(new Observable.OnSubscribe<Bitmap>() {
@@ -116,7 +92,5 @@ public class AboutUsActivity extends PTActivity {
                         }
                     }
                 });
-
-
     }
 }

@@ -51,11 +51,6 @@ public class LoginActivity extends PTMVPActivity<LoginPresenter> implements Logi
     }
 
     @Override
-    public String getLoadingMessage() {
-        return null;
-    }
-
-    @Override
     protected void onViewCreated(@Nullable Bundle savedInstanceState) {
         super.onViewCreated(savedInstanceState);
 

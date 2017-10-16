@@ -5,7 +5,7 @@
                 android:background="@color/md_grey_200">
 
     <com.jusenr.androidlibrary.widgets.recyclerView.BaseRecyclerView
-        android:id="@+id/rlv_repo_list"
+        android:id="@+id/user_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"

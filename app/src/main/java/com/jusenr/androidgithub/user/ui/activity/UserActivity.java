@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 
@@ -48,16 +47,8 @@ public class UserActivity extends PTMVPActivity<UserPresenter> implements UserCo
     }
 
     @Override
-    public String getLoadingMessage() {
-        return null;
-    }
-
-    @Override
     protected void onViewCreated(@Nullable Bundle savedInstanceState) {
         super.onViewCreated(savedInstanceState);
-
-        getSupportActionBar().setHomeButtonEnabled(true);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         mUsername = getIntent().getStringExtra(Constants.BundleKey.BUNDLE_USER_NAME);
         if (!TextUtils.isEmpty(mUsername)) {
@@ -81,15 +72,6 @@ public class UserActivity extends PTMVPActivity<UserPresenter> implements UserCo
             ToastUtils.show(this, msg);
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            onBackPressed();
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
     @OnClick({R.id.repo_layout, R.id.starred_layout, R.id.following_layout, R.id.followers_layout})
     public void onClick(View view) {
         switch (view.getId()) {
@@ -106,11 +88,17 @@ public class UserActivity extends PTMVPActivity<UserPresenter> implements UserCo
                 startActivity(intent1);
                 break;
             case R.id.following_layout:
-//                UserListActivity.launchToShowFollowing(this, mUsername);
+                Intent intent2 = new Intent(this, UserListActivity.class);
+                intent2.putExtra(Constants.BundleKey.BUNDLE_USER_NAME, mUsername);
+                intent2.setAction(Constants.ActionKey.ACTION_FOLLOWING);
+                startActivity(intent2);
                 break;
 
             case R.id.followers_layout:
-//                UserListActivity.launchToShowFollowers(this, mUsername);
+                Intent intent3 = new Intent(this, UserListActivity.class);
+                intent3.putExtra(Constants.BundleKey.BUNDLE_USER_NAME, mUsername);
+                intent3.setAction(Constants.ActionKey.ACTION_FOLLOWERS);
+                startActivity(intent3);
                 break;
         }
     }

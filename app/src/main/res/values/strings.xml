@@ -27,9 +27,9 @@
     <string name="followers">%1$s \'s followers</string>
 
     <string name="my_repositories">My Repositories</string>
-    <string name="my_stars">my stars</string>
-    <string name="my_following">my following</string>
-    <string name="my_followers">my followers</string>
+    <string name="my_stars">My Stars</string>
+    <string name="my_following">My Following</string>
+    <string name="my_followers">My Followers</string>
 
     <string name="repodetail_forks_count">( %1$d )</string>
     <string name="repodetail_contributors_count">( %1$d )</string>

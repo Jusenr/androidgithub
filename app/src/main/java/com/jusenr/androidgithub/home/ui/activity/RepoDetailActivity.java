@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.text.TextUtils;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -82,16 +81,8 @@ public class RepoDetailActivity extends PTMVPActivity<RepoDetailPresenter> imple
     }
 
     @Override
-    public String getLoadingMessage() {
-        return null;
-    }
-
-    @Override
     protected void onViewCreated(@Nullable Bundle savedInstanceState) {
         super.onViewCreated(savedInstanceState);
-
-        getSupportActionBar().setHomeButtonEnabled(true);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         initViews();
 
@@ -145,15 +136,6 @@ public class RepoDetailActivity extends PTMVPActivity<RepoDetailPresenter> imple
         Snackbar.make(mRivRepoItemView, b ? "UnStar Success" : "UnStar Failed", Snackbar.LENGTH_LONG).show();
         if (b)
             mPresenter.onLoadRepoDetails(mOwner, mRepoName);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            onBackPressed();
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
     }
 
     @OnClick({R.id.ll_code_layout, R.id.ll_readme_layout})

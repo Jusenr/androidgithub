@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.LayoutInflaterCompat;
+import android.support.v7.app.ActionBar;
+import android.view.MenuItem;
 
 import com.jusenr.androidgithub.R;
 import com.jusenr.androidlibrary.base.BaseActivity;
@@ -43,6 +45,12 @@ public abstract class PTActivity extends BaseActivity implements LoadView {
         LayoutInflaterCompat.setFactory(getLayoutInflater(), new IconicsLayoutInflater(getDelegate()));
         super.onCreate(savedInstanceState);
 
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setHomeButtonEnabled(true);
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
+
         mActivity = this;
         mApplication = (PTApplication) getApplication();
         mBundle = getIntent().getExtras() != null ? getIntent().getExtras() : new Bundle();
@@ -62,7 +70,9 @@ public abstract class PTActivity extends BaseActivity implements LoadView {
         onViewCreated(savedInstanceState);
     }
 
-    public abstract String getLoadingMessage();
+    public String getLoadingMessage() {
+        return null;
+    }
 
     protected abstract void onViewCreated(@Nullable Bundle savedInstanceState);
 
@@ -93,13 +103,21 @@ public abstract class PTActivity extends BaseActivity implements LoadView {
 //            mPTToast.dismiss();
     }
 
-
     @Override
     protected void onDestroy() {
         super.onDestroy();
         unbinder.unbind();
         if (useEventBus())
             EventBusUtils.unregister(this);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -130,21 +148,4 @@ public abstract class PTActivity extends BaseActivity implements LoadView {
         }
         return true;
     }
-
-
-//    public void showOfflineDialog() {
-//        if (mOfflineDialog == null) {
-//            mOfflineDialog = new SelectDialog.Builder(this)
-//                    .setTitle(R.string.offline_desc)
-//                    .setCanceledOnTouchOutside(false)
-//                    .setPositiveButton(getString(R.string.main_dialog_know), new SelectDialog.OnPositiveClickListener() {
-//                        @Override
-//                        public void onClick(SelectDialog dialog, Button button) {
-//                            mOfflineDialog.dismiss();
-//                        }
-//                    })
-//                    .build();
-//        }
-//        mOfflineDialog.show();
-//    }
 }

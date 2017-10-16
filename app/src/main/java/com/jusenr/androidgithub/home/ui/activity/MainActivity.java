@@ -21,7 +21,7 @@ import com.jusenr.androidgithub.guidance.AboutUsActivity;
 import com.jusenr.androidgithub.home.ui.fragment.MineFragment;
 import com.jusenr.androidgithub.home.ui.fragment.MostStarFragment;
 import com.jusenr.androidgithub.home.ui.fragment.TrendingContainerFragment;
-import com.jusenr.androidgithub.user.SettingsActivity;
+import com.jusenr.androidgithub.user.ui.activity.SettingsActivity;
 import com.jusenr.androidgithub.user.ui.activity.UserActivity;
 import com.jusenr.androidgithub.utils.AccountHelper;
 import com.jusenr.androidgithub.utils.Constants;
@@ -83,11 +83,6 @@ public class MainActivity extends PTActivity {
     }
 
     @Override
-    public String getLoadingMessage() {
-        return null;
-    }
-
-    @Override
     protected void onViewCreated(@Nullable Bundle savedInstanceState) {
         mBottomBar = BottomBar.attach(this, savedInstanceState);
         initViews();
@@ -110,6 +105,9 @@ public class MainActivity extends PTActivity {
         switch (item.getItemId()) {
             case R.id.action_search:
                 startActivity(new Intent(this, SearchActivity.class));
+                return true;
+            case android.R.id.home:
+                mPTSlideMenu.toggle();
                 return true;
         }
         return super.onOptionsItemSelected(item);
@@ -173,6 +171,8 @@ public class MainActivity extends PTActivity {
 
     private void initViews() {
         mPTSlideMenu.requestDisallowInterceptTouchEvent(true);
+
+        mToolbar.setNavigationIcon(R.mipmap.menu);
         setSupportActionBar(mToolbar);
 
         mBottomBar.setItems(R.menu.bottombar_menu);
