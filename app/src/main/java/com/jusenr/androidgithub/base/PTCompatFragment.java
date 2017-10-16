@@ -1,5 +1,6 @@
 package com.jusenr.androidgithub.base;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -23,21 +24,24 @@ import butterknife.Unbinder;
  */
 
 public abstract class PTCompatFragment<P extends BasePresenter> extends Fragment implements LoadView {
+
     @Inject
     protected P mPresenter;
 
     private Unbinder unbinder;
 
     protected PTApplication mApplication;
+    protected Activity mActivity;
 
-    private LoadingView mLoadingView;
+    protected LoadingView mLoadingView;
 //    protected PTLoading mPTLoading;
 //    protected PTToast mPTToast;
 
     @Nullable
     @Override
     public final View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-//        mApplication = (PTApplication) getActivity().getApplication();
+        mApplication = (PTApplication) getActivity().getApplication();
+        mActivity = getActivity();
         View view = LayoutInflater.from(getActivity()).inflate(getLayoutId(), null);
         unbinder = ButterKnife.bind(this, view);
         mLoadingView = new LoadingView(getActivity(), getLoadingMessage());

@@ -27,8 +27,8 @@ public abstract class PTActivity extends BaseActivity implements LoadView {
     private long exitTime = 0;
     private Unbinder unbinder;
 
-    protected Activity mActivity;
     protected PTApplication mApplication;
+    protected Activity mActivity;
     protected Bundle mBundle;
     protected boolean isResume;
 
