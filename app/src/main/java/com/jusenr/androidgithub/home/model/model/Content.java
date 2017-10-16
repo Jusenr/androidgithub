@@ -95,4 +95,16 @@ public class Content extends ShaUrlModel implements Serializable {
     public void setParent(Content parent) {
         this.parent = parent;
     }
+
+    public boolean isDir() {
+        return ContentType.dir.equals(type);
+    }
+
+    public boolean isFile() {
+        return ContentType.file.equals(type);
+    }
+
+    public boolean isSubmodule() {
+        return ContentType.symlink.equals(type);
+    }
 }

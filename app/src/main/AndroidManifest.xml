@@ -96,6 +96,12 @@
         <activity
             android:name=".user.ui.activity.UserListActivity"
             android:screenOrientation="portrait"/>
+        <activity
+            android:name=".home.ui.activity.CodeActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".home.ui.activity.RepoTreeActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

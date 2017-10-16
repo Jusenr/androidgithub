@@ -6,6 +6,9 @@
 
     <color name="divider_color">#E1E1E1</color>
 
+    <color name="crumb_active">#FFFFFF</color>
+    <color name="crumb_inactive">#73FFFFFF</color>
+
     <!-- material colors -->
     <color name="black">#000000</color>
     <color name="white">#FFFFFF</color>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/root_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/md_grey_200"
+    android:orientation="vertical">
+
+    <com.jusenr.androidgithub.widgets.LinearBreadcrumbView
+        android:id="@+id/lbv_path_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?colorPrimary"/>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.jusenr.androidlibrary.widgets.recyclerView.BaseRecyclerView
+            android:id="@+id/brv_repo_tree"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            app:divider_color="@color/divider_color"
+            app:row_divider="true"/>
+
+    </FrameLayout>
+
+</LinearLayout>

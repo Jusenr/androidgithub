@@ -142,12 +142,15 @@ public class RepoDetailActivity extends PTMVPActivity<RepoDetailPresenter> imple
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.ll_code_layout:
-//                RepoTreeActivity.launch(this, mOwner, mRepoName);
+                Intent intent = new Intent(mActivity, RepoTreeActivity.class);
+                intent.putExtra(Constants.BundleKey.BUNDLE_OWNER, mOwner);
+                intent.putExtra(Constants.BundleKey.BUNDLE_REPO_NAME, mRepoName);
+                startActivity(intent);
                 break;
             case R.id.ll_readme_layout:
-                Intent intent = new Intent(mActivity, ReadmeActivity.class);
-                intent.putExtra(Constants.BundleKey.BUNDLE_README, mRepoDetail.getReadme());
-                startActivity(intent);
+                Intent intent1 = new Intent(mActivity, ReadmeActivity.class);
+                intent1.putExtra(Constants.BundleKey.BUNDLE_README, mRepoDetail.getReadme());
+                startActivity(intent1);
                 break;
         }
     }

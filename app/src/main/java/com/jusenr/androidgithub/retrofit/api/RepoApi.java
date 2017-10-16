@@ -132,15 +132,20 @@ public interface RepoApi {
 
 
     @GET("/repos/{owner}/{repo}/contents")
-    Observable<ArrayList<Content>> contents(@Header("Authorization") String authorization, @Path("owner") String owner, @Path("repo") String repo);
+    Observable<ArrayList<Content>> contents(@Header("Authorization") String authorization,
+                                            @Path("owner") String owner,
+                                            @Path("repo") String repo);
+
+    @GET("/repos/{owner}/{repo}/contents/{path}")
+    Observable<ArrayList<Content>> contentsWithPath(@Header("Authorization") String authorization,
+                                                    @Path("owner") String owner,
+                                                    @Path("repo") String repo,
+                                                    @Path("path") String path);
+
 
     @GET("/repos/{owner}/{repo}/contents")
     Observable<ArrayList<Content>> contentsByRef(@Header("Authorization") String authorization, @Path("owner") String owner, @Path("repo") String repo,
                                                  @Query("ref") String ref);
-
-    @GET("/repos/{owner}/{repo}/contents/{path}")
-    Observable<ArrayList<Content>> contentsWithPath(@Header("Authorization") String authorization, @Path("owner") String owner, @Path("repo") String repo,
-                                                    @Path("path") String path);
 
     @GET("/repos/{owner}/{repo}/contents/{path}")
     Observable<ArrayList<Content>> contentsWithPathByRef(@Header("Authorization") String authorization, @Path("owner") String owner, @Path("repo") String repo,
