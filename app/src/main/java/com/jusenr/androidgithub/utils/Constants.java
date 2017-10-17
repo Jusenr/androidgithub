@@ -72,7 +72,6 @@ public class Constants {
 
     public static class Value {
         // page size
-        public static final String AUTHOR = "Jusenr";
         public static final int PAGE_SIZE = 30;
         public static final String SORT_BY_STARS = "stars";
         public static final String ORDER_BY_DESC = "desc";

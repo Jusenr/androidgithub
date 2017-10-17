@@ -8,6 +8,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.jusenr.androidgithub.R;
+import com.jusenr.androidgithub.base.BaseApi;
 import com.jusenr.androidgithub.base.PTActivity;
 import com.jusenr.androidgithub.utils.Constants;
 import com.jusenr.toolslibrary.utils.AppUtils;
@@ -56,7 +57,7 @@ public class SettingsActivity extends PTActivity {
                 break;
             case R.id.tv_about_author:
                 Intent intent = new Intent(mActivity, UserActivity.class);
-                intent.putExtra(Constants.BundleKey.BUNDLE_USER_NAME, Constants.Value.AUTHOR);
+                intent.putExtra(Constants.BundleKey.BUNDLE_USER_NAME, BaseApi.AUTHOR_NAME);
                 startActivity(intent);
                 break;
             case R.id.tv_about:
