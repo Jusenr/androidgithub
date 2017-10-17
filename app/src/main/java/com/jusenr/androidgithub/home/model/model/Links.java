@@ -34,4 +34,13 @@ public class Links implements Serializable {
     public void setGit(String git) {
         this.git = git;
     }
+
+    @Override
+    public String toString() {
+        return "Links{" +
+                "html='" + html + '\'' +
+                ", self='" + self + '\'' +
+                ", git='" + git + '\'' +
+                '}';
+    }
 }

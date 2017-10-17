@@ -3,8 +3,10 @@ package com.jusenr.androidgithub.retrofit.api;
 import android.support.annotation.IntDef;
 
 import com.jusenr.androidgithub.home.model.model.Content;
+import com.jusenr.androidgithub.home.model.model.IssuesModel;
 import com.jusenr.androidgithub.home.model.model.Repo;
 import com.jusenr.androidgithub.home.model.model.SearchResultResp;
+import com.jusenr.androidgithub.user.model.model.OrganizationsModel;
 import com.jusenr.androidgithub.user.model.model.UserModel;
 
 import java.util.ArrayList;
@@ -236,6 +238,17 @@ public interface RepoApi {
                                                       @Path("user") String user);
 
     /**
+     * 获取组织信息
+     *
+     * @param authorization 授权账号信息
+     * @param user          注册的用户名
+     * @return
+     */
+    @GET("/users/{user}/orgs")
+    Observable<ArrayList<OrganizationsModel>> organizations(@Header("Authorization") String authorization,
+                                                            @Path("user") String user);
+
+    /**
      * 获取我的Followers列表
      *
      * @param authorization 授权账号信息
@@ -308,19 +321,19 @@ public interface RepoApi {
                                       @Path("repo") String repo,
                                       @Path("path") String path);
 
+    /**
+     * @param authorization 授权账号信息
+     * @param owner
+     * @param repo
+     * @param sort          排序依据[newest]最新倒序
+     * @return
+     */
+    @GET("/repos/{owner}/{repo}/issues")
+    Observable<ArrayList<IssuesModel>> issues(@Header("Authorization") String authorization,
+                                              @Path("owner") String owner,
+                                              @Path("repo") String repo,
+                                              @Query("sort") String sort);
 
-    @GET("/repos/{owner}/{repo}/contents")
-    Observable<ArrayList<Content>> contentsByRef(@Header("Authorization") String authorization,
-                                                 @Path("owner") String owner,
-                                                 @Path("repo") String repo,
-                                                 @Query("ref") String ref);
-
-    @GET("/repos/{owner}/{repo}/contents/{path}")
-    Observable<ArrayList<Content>> contentsWithPathByRef(@Header("Authorization") String authorization,
-                                                         @Path("owner") String owner,
-                                                         @Path("repo") String repo,
-                                                         @Path("path") String path,
-                                                         @Query("ref") String ref);
 
     @GET("/repos/{owner}/{repo}/contents/{path}")
     Observable<Content> contentDetailByRef(@Header("Authorization") String authorization,

@@ -54,6 +54,10 @@ public class RepoDetailActivity extends PTMVPActivity<RepoDetailPresenter> imple
     TextView mTvCodeLabel;
     @BindView(R.id.ll_code_layout)
     LinearLayout mLlCodeLayout;
+    @BindView(R.id.tv_issues_count)
+    TextView mTvIssuesCount;
+    @BindView(R.id.ll_issues_layout)
+    LinearLayout mLlIssuesLayout;
     @BindView(R.id.tv_readme_label)
     TextView mTvReadmeLabel;
     @BindView(R.id.ll_readme_layout)
@@ -110,11 +114,19 @@ public class RepoDetailActivity extends PTMVPActivity<RepoDetailPresenter> imple
             mLlForkLayout.setVisibility(View.GONE);
         } else {
             mLlForkLayout.setVisibility(View.VISIBLE);
-            mTvForksCount.setText(getResources().getString(R.string.repodetail_forks_count, forks));
+            mTvForksCount.setText(getResources().getString(R.string.count, forks));
             mForkUserAdapter.setNewData(detail.getForks());
         }
 
-        mContributorsCount.setText(getResources().getString(R.string.repodetail_contributors_count, detail.getContributors().size()));
+        boolean has_issues = detail.getBaseRepo().isHas_issues();
+        if (has_issues) {
+            mLlIssuesLayout.setVisibility(View.VISIBLE);
+            mTvIssuesCount.setText(getResources().getString(R.string.count, detail.getBaseRepo().getOpen_issues_count()));
+        } else {
+            mLlIssuesLayout.setVisibility(View.GONE);
+        }
+
+        mContributorsCount.setText(getResources().getString(R.string.count, detail.getContributors().size()));
         mContributorAdapter.setNewData(detail.getContributors());
     }
 
@@ -138,7 +150,7 @@ public class RepoDetailActivity extends PTMVPActivity<RepoDetailPresenter> imple
             mPresenter.onLoadRepoDetails(mOwner, mRepoName);
     }
 
-    @OnClick({R.id.ll_code_layout, R.id.ll_readme_layout})
+    @OnClick({R.id.ll_code_layout, R.id.ll_issues_layout, R.id.ll_readme_layout})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.ll_code_layout:
@@ -147,10 +159,16 @@ public class RepoDetailActivity extends PTMVPActivity<RepoDetailPresenter> imple
                 intent.putExtra(Constants.BundleKey.BUNDLE_REPO_NAME, mRepoName);
                 startActivity(intent);
                 break;
-            case R.id.ll_readme_layout:
-                Intent intent1 = new Intent(mActivity, ReadmeActivity.class);
-                intent1.putExtra(Constants.BundleKey.BUNDLE_README, mRepoDetail.getReadme());
+            case R.id.ll_issues_layout:
+                Intent intent1 = new Intent(mActivity, IssuesListActivity.class);
+                intent1.putExtra(Constants.BundleKey.BUNDLE_OWNER, mOwner);
+                intent1.putExtra(Constants.BundleKey.BUNDLE_REPO_NAME, mRepoName);
                 startActivity(intent1);
+                break;
+            case R.id.ll_readme_layout:
+                Intent intent2 = new Intent(mActivity, ReadmeActivity.class);
+                intent2.putExtra(Constants.BundleKey.BUNDLE_README, mRepoDetail.getReadme());
+                startActivity(intent2);
                 break;
         }
     }

@@ -8,6 +8,11 @@ import java.util.ArrayList;
  */
 public class SearchResultResp implements Serializable {
 
+    /**
+     * "total_count": 128843,
+     * "incomplete_results": false,
+     * "items": []
+     */
     private long total_count;
     private boolean incomplete_results;
     private ArrayList<Repo> items;
@@ -36,4 +41,12 @@ public class SearchResultResp implements Serializable {
         this.items = items;
     }
 
+    @Override
+    public String toString() {
+        return "SearchResultResp{" +
+                "total_count=" + total_count +
+                ", incomplete_results=" + incomplete_results +
+                ", items=" + items +
+                '}';
+    }
 }

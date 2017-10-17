@@ -23,10 +23,16 @@
             android:orientation="horizontal">
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
                 android:gravity="center_vertical"
                 android:text="{oct-repo}  Repositories"/>
+
+            <TextView
+                android:id="@+id/tv_repositories_count"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"/>
 
         </LinearLayout>
 
@@ -37,8 +43,8 @@
             android:orientation="horizontal">
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
                 android:gravity="center_vertical"
                 android:text="{oct-star}  Starred Repositories"/>
 
@@ -51,10 +57,16 @@
             android:orientation="horizontal">
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
                 android:gravity="center_vertical"
                 android:text="{faw-users}  Following"/>
+
+            <TextView
+                android:id="@+id/tv_following_count"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"/>
 
         </LinearLayout>
 
@@ -65,11 +77,61 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/textView"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
                 android:gravity="center_vertical"
                 android:text="{faw-user_md}  Followers"/>
+
+            <TextView
+                android:id="@+id/tv_followers_count"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/organizations_layout"
+            style="@style/style_linear_layout"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="{oct_organization}  Organizations"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_orgs_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="20dp">
+
+                <com.jusenr.androidlibrary.widgets.fresco.FrescoImageView
+                    android:id="@+id/fiv_orgs_icon"
+                    style="@style/image_round_4dp"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"/>
+
+                <TextView
+                    android:id="@+id/tv_orgs_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center_vertical"/>
+
+            </LinearLayout>
+
 
         </LinearLayout>
 

@@ -57,12 +57,12 @@ public class RepoDetailInteractorImpl implements RepoDetailContract.Interactor {
     }
 
     @Override
-    public Observable<RepoDetail> getRepoDetail(String owner, String name) {
-        return Observable.zip(repoApi.get(AccountHelper.getCurrentUid(), owner, name),
-                repoApi.contributors(AccountHelper.getCurrentUid(), owner, name),
-                repoApi.listForks(AccountHelper.getCurrentUid(), owner, name, Constants.Value.NEWEST),
-                repoApi.readme(AccountHelper.getCurrentUid(), owner, name),
-                isStarred(owner, name),
+    public Observable<RepoDetail> getRepoDetail(String owner, String repo) {
+        return Observable.zip(repoApi.get(AccountHelper.getCurrentUid(), owner, repo),
+                repoApi.contributors(AccountHelper.getCurrentUid(), owner, repo),
+                repoApi.listForks(AccountHelper.getCurrentUid(), owner, repo, Constants.Value.NEWEST),
+                repoApi.readme(AccountHelper.getCurrentUid(), owner, repo),
+                isStarred(owner, repo),
                 new Func5<Repo, ArrayList<UserModel>, ArrayList<Repo>, Content, Boolean, RepoDetail>() {
                     @Override
                     public RepoDetail call(Repo repo, ArrayList<UserModel> users, ArrayList<Repo> forks, Content readme, Boolean isStarred) {

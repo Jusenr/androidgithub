@@ -21,7 +21,7 @@ public interface RepoDetailContract {
 
     interface Interactor extends IInteractor {
 
-        Observable<RepoDetail> getRepoDetail(String owner, String name);
+        Observable<RepoDetail> getRepoDetail(String owner, String repo);
 
         Observable<Boolean> starRepo(String owner, String repo);
 

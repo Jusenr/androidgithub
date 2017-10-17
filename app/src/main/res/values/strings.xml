@@ -16,6 +16,7 @@
     <string name="loading">Loading</string>
     <string name="sign_in">Sign In</string>
     <string name="please_login">Please Login</string>
+    <string name="count">( %1$d )</string>
 
     <string name="upgrade">Check the Newest Version</string>
     <string name="about">About This App</string>
@@ -30,9 +31,6 @@
     <string name="my_stars">My Stars</string>
     <string name="my_following">My Following</string>
     <string name="my_followers">My Followers</string>
-
-    <string name="repodetail_forks_count">( %1$d )</string>
-    <string name="repodetail_contributors_count">( %1$d )</string>
 
     <string name="about_us">About Us</string>
     <string name="about_us_github_com_v3">Api from Github Document \nhttps://developer.github.com/v3</string>

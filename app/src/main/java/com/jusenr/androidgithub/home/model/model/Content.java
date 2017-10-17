@@ -107,4 +107,20 @@ public class Content extends ShaUrlModel implements Serializable {
     public boolean isSubmodule() {
         return ContentType.symlink.equals(type);
     }
+
+    @Override
+    public String toString() {
+        return "Content{" +
+                "type=" + type +
+                ", size=" + size +
+                ", name='" + name + '\'' +
+                ", content='" + content + '\'' +
+                ", path='" + path + '\'' +
+                ", git_url='" + git_url + '\'' +
+                ", _links=" + _links +
+                ", encoding='" + encoding + '\'' +
+                ", children=" + children +
+                ", parent=" + parent +
+                '}';
+    }
 }
