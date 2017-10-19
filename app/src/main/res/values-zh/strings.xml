@@ -5,19 +5,12 @@
     <string name="begun_to_taste">Begin to experience</string>
 
     <!-- guidance -->
-    <string name="guidance_image_1">http://cdn.iciba.com/news/word/big_20170213b.jpg</string>
-    <string name="guidance_image_2">http://cdn.iciba.com/news/word/big_20170214b.jpg</string>
-    <string name="guidance_image_3">http://cdn.iciba.com/news/word/big_20170216b.jpg</string>
-    <string name="guidance_image_4">http://cdn.iciba.com/news/word/big_20171016b.jpg</string>
-    <string name="guidance_image_5">http://cdn.iciba.com/news/word/big_20171018b.jpg</string>
-    <string name="guidance_image_6">http://cdn.iciba.com/news/word/big_20171019b.jpg</string>
-
-    <string name="guidance_text_1">I love it when I catch you looking at me then you smile and look away.</string>
-    <string name="guidance_text_2">If you fall in love with your Mr Right,every day is like Valentine\'s Day.</string>
-    <string name="guidance_text_3">Life is like angry birds.There are always several pigs laughing when you lose.</string>
-    <string name="guidance_text_4">To live is the rarest thing in the world. Most people exist, that is all.</string>
-    <string name="guidance_text_5">Be yourself. The world worships the original.</string>
-    <string name="guidance_text_6">There is only one success --- to be able to spend your life in your own way.</string>
+    <string name="guidance_text_1">我喜欢这样的时刻：我抓到你正在看我，你笑了，然后害羞地别过脸去。</string>
+    <string name="guidance_text_2">其实爱对了人，每天都是情人节。</string>
+    <string name="guidance_text_3">人生就像愤怒的小鸟，当你失败时，总有几头猪在笑！</string>
+    <string name="guidance_text_4">生活是世上最罕见的事情，大多数人只是存在，仅此而已。</string>
+    <string name="guidance_text_5">做你自己，这世界崇拜原创性。</string>
+    <string name="guidance_text_6">只有一种成功，那就是能够用自己的方式度过自己的一生。</string>
 
 
     <!-- main menu labels -->

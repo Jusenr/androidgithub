@@ -24,8 +24,10 @@ public class InitializeIntentService extends IntentService {
 
     @Override
     protected void onHandleIntent(@Nullable Intent intent) {
-
-        setupUmeng();
+        //UMeng初始化
+        MobclickAgent.setDebugMode(BuildConfig.IS_TEST);
+        MobclickAgent.setCatchUncaughtExceptions(true);
+        MobclickAgent.openActivityDurationTrack(false);
 
         //Logcat异常捕捉
 //        CrashHandler.getInstance().initCrashHandler(getApplication());
@@ -35,11 +37,5 @@ public class InitializeIntentService extends IntentService {
 
         // init Share
         SharePlatform.init(this.getApplicationContext());
-    }
-
-    private void setupUmeng() {
-        MobclickAgent.setDebugMode(BuildConfig.IS_TEST);
-        MobclickAgent.setCatchUncaughtExceptions(true);
-        MobclickAgent.openActivityDurationTrack(false);
     }
 }

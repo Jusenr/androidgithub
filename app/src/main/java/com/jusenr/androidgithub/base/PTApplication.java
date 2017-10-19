@@ -12,6 +12,8 @@ import com.jusenr.androidgithub.utils.AccountHelper;
 import com.jusenr.androidlibrary.BaseApplication;
 import com.jusenr.androidlibrary.commn.database.DBManager;
 import com.jusenr.androidlibrary.widgets.fresco.ImagePipelineFactory;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
 
 /**
@@ -34,6 +36,11 @@ public class PTApplication extends BaseApplication {
                 ImagePipelineFactory.imagePipelineConfig(getApplicationContext()
                         , getAppComponent().okHttpClient()
                         , getCacheDir().getAbsolutePath()));
+
+        //ImageLoader初始化
+        ImageLoaderConfiguration configuration = new ImageLoaderConfiguration.Builder(this).build();
+        ImageLoader.getInstance().init(configuration);
+
         DBManager.init(this);
         if (AccountHelper.isLogin())
             DBManager.initDefaultRealm(AccountHelper.getCurrentUid(), APPRealmMigration.VERSION, new APPRealmMigration());
