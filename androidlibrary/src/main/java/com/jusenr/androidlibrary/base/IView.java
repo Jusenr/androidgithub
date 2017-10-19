@@ -5,5 +5,4 @@ package com.jusenr.androidlibrary.base;
  */
 
 public interface IView {
-    public static final String TAG = IView.class.getSimpleName();
 }

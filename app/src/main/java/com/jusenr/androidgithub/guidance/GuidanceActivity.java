@@ -12,6 +12,7 @@ import com.jusenr.androidgithub.base.PTActivity;
 import com.jusenr.androidgithub.home.ui.activity.MainActivity;
 import com.jusenr.androidgithub.user.ui.activity.LoginActivity;
 import com.jusenr.androidgithub.utils.AccountHelper;
+import com.jusenr.toolslibrary.utils.StringUtils;
 import com.youth.banner.Banner;
 
 import java.util.Arrays;
@@ -52,6 +53,7 @@ public class GuidanceActivity extends PTActivity {
                 getString(R.string.guidance_text_5),
                 getString(R.string.guidance_text_6)
         };
+        mTvText.setText(texts[0]);
         mBanner.setImageLoader(new BannerImageLoader());
         //设置图片集合
         mBanner.setImages(Arrays.asList(urls));
@@ -66,8 +68,11 @@ public class GuidanceActivity extends PTActivity {
 
             @Override
             public void onPageSelected(int position) {
-//                int i = (position - 1) % urls.length;
-//                mTvText.setText(texts[i]);
+                int i = 0;
+                if (position > 1)
+                    i = (position - 1) % urls.length;
+                if (!StringUtils.isEmpty(texts[i]))
+                    mTvText.setText(texts[i]);
             }
 
             @Override
