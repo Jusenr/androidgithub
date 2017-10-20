@@ -107,7 +107,7 @@ public interface RepoApi {
                                            @Query("type") String type);
 
     /**
-     * 获取用户项目列表
+     * 获取用户/组织项目列表
      *
      * @param authorization 授权账号信息
      * @param user          注册的用户名
@@ -334,13 +334,16 @@ public interface RepoApi {
                                               @Path("repo") String repo,
                                               @Query("sort") String sort);
 
-
-    @GET("/repos/{owner}/{repo}/contents/{path}")
-    Observable<Content> contentDetailByRef(@Header("Authorization") String authorization,
-                                           @Path("owner") String owner,
-                                           @Path("repo") String repo,
-                                           @Path("path") String path,
-                                           @Query("ref") String ref);
+    /**
+     * 获取组织项目仓库列表
+     *
+     * @param authorization
+     * @param owner
+     * @return
+     */
+    @GET("/orgs/{owner}/repos")
+    Observable<ArrayList<Repo>> loadOrgsRepos(@Header("Authorization") String authorization,
+                                              @Path("owner") String owner);
 
 
 }

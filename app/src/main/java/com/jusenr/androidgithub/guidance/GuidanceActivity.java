@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -68,10 +69,11 @@ public class GuidanceActivity extends PTActivity {
 
             @Override
             public void onPageSelected(int position) {
+                Log.e("####", "onPageSelected: " + position);
                 int i = 0;
                 if (position > 1)
                     i = (position - 1) % urls.length;
-                if (!StringUtils.isEmpty(texts[i]))
+                if (mTvText != null && !StringUtils.isEmpty(texts[i]))
                     mTvText.setText(texts[i]);
             }
 
@@ -82,6 +84,15 @@ public class GuidanceActivity extends PTActivity {
         });
         //启动轮播
         mBanner.start();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (mBanner != null) {
+            mBanner.stopAutoPlay();
+            mBanner.releaseBanner();
+        }
     }
 
     @OnClick(R.id.btn_start)

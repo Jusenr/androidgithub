@@ -109,7 +109,6 @@
         <activity
             android:name=".home.ui.activity.IssuesListActivity"
             android:screenOrientation="portrait"/>
-
     </application>
 
 </manifest>

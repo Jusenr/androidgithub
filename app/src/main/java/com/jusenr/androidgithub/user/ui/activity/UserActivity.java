@@ -3,11 +3,13 @@ package com.jusenr.androidgithub.user.ui.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.jusenr.androidgithub.R;
 import com.jusenr.androidgithub.base.PTMVPActivity;
 import com.jusenr.androidgithub.home.ui.activity.RepoListActivity;
@@ -17,9 +19,9 @@ import com.jusenr.androidgithub.user.di.module.UserModule;
 import com.jusenr.androidgithub.user.model.model.OrganizationsModel;
 import com.jusenr.androidgithub.user.model.model.UserModel;
 import com.jusenr.androidgithub.user.presenter.UserPresenter;
+import com.jusenr.androidgithub.user.ui.adapter.OrgsListRecyclerAdapter;
 import com.jusenr.androidgithub.utils.Constants;
 import com.jusenr.androidgithub.widgets.UserCardView;
-import com.jusenr.androidlibrary.widgets.fresco.FrescoImageView;
 import com.jusenr.toolslibrary.utils.ListUtils;
 import com.jusenr.toolslibrary.utils.StringUtils;
 import com.jusenr.toolslibrary.utils.ToastUtils;
@@ -35,20 +37,23 @@ public class UserActivity extends PTMVPActivity<UserPresenter> implements UserCo
     LinearLayout mLlRootLayout;
     @BindView(R.id.user_card)
     UserCardView mUserCardView;
+    @BindView(R.id.starred_layout)
+    LinearLayout mStarredLayout;
     @BindView(R.id.tv_repositories_count)
     TextView mTvRepositoriesCount;
     @BindView(R.id.tv_following_count)
     TextView mTvFollowingCount;
     @BindView(R.id.tv_followers_count)
     TextView mTvFollowersCount;
+    @BindView(R.id.organizations_layout)
+    LinearLayout mLlOrganizationsLayout;
     @BindView(R.id.ll_orgs_info)
     LinearLayout mLlOrgsInfo;
-    @BindView(R.id.fiv_orgs_icon)
-    FrescoImageView mFivOrgsIcon;
-    @BindView(R.id.tv_orgs_name)
-    TextView mTvOrgsName;
+    @BindView(R.id.brv_orgs_list)
+    RecyclerView mBrvOrgsList;
 
 
+    private OrgsListRecyclerAdapter mAdapter;
     private String mUsername;
 
     @Override
@@ -73,10 +78,15 @@ public class UserActivity extends PTMVPActivity<UserPresenter> implements UserCo
         if (!TextUtils.isEmpty(mUsername)) {
             setTitle(mUsername);
             mPresenter.onUserInfo(mUsername);
+            mPresenter.onOrganizations(mUsername);
         }
 
         mLlRootLayout.setVisibility(View.INVISIBLE);
-        mLlOrgsInfo.setVisibility(View.GONE);
+        mLlOrgsInfo.setVisibility(View.INVISIBLE);
+
+        mAdapter = new OrgsListRecyclerAdapter(null);
+        mAdapter.setOnRecyclerViewItemClickListener(mItemtClickListener);
+        mBrvOrgsList.setAdapter(mAdapter);
     }
 
     @Override
@@ -99,12 +109,11 @@ public class UserActivity extends PTMVPActivity<UserPresenter> implements UserCo
     @Override
     public void organizationsResult(ArrayList<OrganizationsModel> modelArrayList) {
         if (!ListUtils.isEmpty(modelArrayList)) {
-            OrganizationsModel model = modelArrayList.get(0);
-            if (model != null) {
-                mLlOrgsInfo.setVisibility(View.VISIBLE);
-                mFivOrgsIcon.setImageURL(model.getAvatar_url());
-                mTvOrgsName.setText(model.getLogin());
-            }
+            mLlOrganizationsLayout.setVisibility(View.VISIBLE);
+            mAdapter.setNewData(modelArrayList);
+        } else {
+            mLlOrganizationsLayout.setVisibility(View.GONE);
+            mLlOrgsInfo.setVisibility(View.GONE);
         }
     }
 
@@ -143,8 +152,22 @@ public class UserActivity extends PTMVPActivity<UserPresenter> implements UserCo
                 startActivity(intent3);
                 break;
             case R.id.organizations_layout:
-                mPresenter.onOrganizations(mUsername);
+                mLlOrgsInfo.setVisibility(View.VISIBLE);
                 break;
         }
     }
+
+    private BaseQuickAdapter.OnRecyclerViewItemClickListener mItemtClickListener = new BaseQuickAdapter.OnRecyclerViewItemClickListener() {
+        @Override
+        public void onItemClick(View view, int position) {
+            OrganizationsModel model = mAdapter.getItem(position);
+            if (model != null) {
+                mUsername = model.getLogin();
+                mLlOrgsInfo.setVisibility(View.INVISIBLE);
+                mStarredLayout.setVisibility(View.GONE);
+                mPresenter.onUserInfo(model.getLogin());
+                mPresenter.onOrganizations(model.getLogin());
+            }
+        }
+    };
 }
