@@ -84,7 +84,7 @@ public class RepoListActivity extends PTMVPActivity<RepoListPresenter> implement
     private void initViews() {
         mAdapter = new RepoListRecyclerAdapter(null);
         mAdapter.setOnRecyclerViewItemClickListener(mItemtClickListener);
-
+        mAdapter.openLoadAnimation(BaseQuickAdapter.SLIDEIN_RIGHT);
         mRlvRepoList.setAdapter(mAdapter);
     }
 

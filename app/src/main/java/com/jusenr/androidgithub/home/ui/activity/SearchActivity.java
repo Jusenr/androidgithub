@@ -152,7 +152,7 @@ public class SearchActivity extends PTMVPActivity<SearchPresenter> implements Se
 
         mAdapter = new RepoListRecyclerAdapter(null);
         mAdapter.setOnRecyclerViewItemClickListener(mItemtClickListener);
-
+        mAdapter.openLoadAnimation(BaseQuickAdapter.SCALEIN);
         mRepoList.setAdapter(mAdapter);
 
         // default is null

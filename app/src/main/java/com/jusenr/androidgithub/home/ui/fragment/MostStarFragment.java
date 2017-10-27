@@ -75,6 +75,7 @@ public class MostStarFragment extends PTMVPFragment<MostStarPresenter> implement
 
         mAdapter = new RepoListRecyclerAdapter(null);
         mAdapter.setOnRecyclerViewItemClickListener(mItemtClickListener);
+        mAdapter.openLoadAnimation(BaseQuickAdapter.SCALEIN);
         mRepoListView.setAdapter(mAdapter);
 
         mPresenter.onLoadMostStars(mCurrentType);

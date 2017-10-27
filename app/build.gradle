@@ -135,6 +135,7 @@ dependencies {
     compile 'com.mukesh:markdownview:1.0.0'
     compile 'com.roughike:bottom-bar:1.4.0.1'
     compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:v1.8.5'
+//    compile 'com.github.baserecycleradapter:library:1.1.0'
     compile 'com.github.rey5137:material:1.2.4'
     compile 'com.github.clans:fab:1.6.4'
     compile 'com.pddstudio:highlightjs-android:1.2.0'
