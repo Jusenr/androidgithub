@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * Created by mingjun on 16/7/18.
  */
-public class RepoContentAdapter extends BaseQuickAdapter<Content> {
+public class RepoContentAdapter extends BaseQuickAdapter<Content, BaseViewHolder> {
 
     public RepoContentAdapter(List<Content> data) {
         super(R.layout.layout_item_content, data);

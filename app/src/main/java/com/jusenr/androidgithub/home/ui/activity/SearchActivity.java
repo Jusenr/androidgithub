@@ -151,7 +151,7 @@ public class SearchActivity extends PTMVPActivity<SearchPresenter> implements Se
                 .build();
 
         mAdapter = new RepoListRecyclerAdapter(null);
-        mAdapter.setOnRecyclerViewItemClickListener(mItemtClickListener);
+        mAdapter.setOnItemClickListener(mItemtClickListener);
         mAdapter.openLoadAnimation(BaseQuickAdapter.SCALEIN);
         mRepoList.setAdapter(mAdapter);
 
@@ -159,9 +159,9 @@ public class SearchActivity extends PTMVPActivity<SearchPresenter> implements Se
         mCurrentLang = "";
     }
 
-    private BaseQuickAdapter.OnRecyclerViewItemClickListener mItemtClickListener = new BaseQuickAdapter.OnRecyclerViewItemClickListener() {
+    private BaseQuickAdapter.OnItemClickListener mItemtClickListener = new BaseQuickAdapter.OnItemClickListener() {
         @Override
-        public void onItemClick(View view, int position) {
+        public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
             Repo repo = mAdapter.getItem(position);
             if (repo != null) {
                 Intent intent = new Intent(mActivity, RepoDetailActivity.class);

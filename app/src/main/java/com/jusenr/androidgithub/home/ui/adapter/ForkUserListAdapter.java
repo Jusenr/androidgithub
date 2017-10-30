@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * Created by mingjun on 16/7/29.
  */
-public class ForkUserListAdapter extends BaseQuickAdapter<Repo> {
+public class ForkUserListAdapter extends BaseQuickAdapter<Repo, BaseViewHolder> {
 
     public ForkUserListAdapter(List<Repo> data) {
         super(R.layout.layout_item_user, data);

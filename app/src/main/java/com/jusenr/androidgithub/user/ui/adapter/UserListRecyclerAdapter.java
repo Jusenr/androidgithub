@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * Created by mingjun on 16/7/18.
  */
-public class UserListRecyclerAdapter extends BaseQuickAdapter<UserModel> {
+public class UserListRecyclerAdapter extends BaseQuickAdapter<UserModel, BaseViewHolder> {
 
     public UserListRecyclerAdapter(List<UserModel> data) {
         super(R.layout.layout_item_user_list, data);

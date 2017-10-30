@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Created by mingjun on 16/7/18.
  */
-public class RepoListRecyclerAdapter extends BaseQuickAdapter<Repo> {
+public class RepoListRecyclerAdapter extends BaseQuickAdapter<Repo, BaseViewHolder> {
 
     public RepoListRecyclerAdapter(List<Repo> data) {
         super(R.layout.layout_item_repo, data);

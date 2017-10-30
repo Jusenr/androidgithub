@@ -53,7 +53,8 @@ public class IssuesListActivity extends PTMVPActivity<IssuesListPresenter> imple
         super.onViewCreated(savedInstanceState);
 
         mAdapter = new IssuesListRecyclerAdapter(null);
-        mAdapter.setOnRecyclerViewItemClickListener(mItemtClickListener);
+        mAdapter.setOnItemClickListener(mItemtClickListener);
+        mAdapter.openLoadAnimation(BaseQuickAdapter.SLIDEIN_BOTTOM);
         mRlvIssuesList.setAdapter(mAdapter);
 
         mOwner = getIntent().getStringExtra(Constants.BundleKey.BUNDLE_OWNER);
@@ -77,9 +78,9 @@ public class IssuesListActivity extends PTMVPActivity<IssuesListPresenter> imple
             ToastUtils.show(this, msg);
     }
 
-    private BaseQuickAdapter.OnRecyclerViewItemClickListener mItemtClickListener = new BaseQuickAdapter.OnRecyclerViewItemClickListener() {
+    private BaseQuickAdapter.OnItemClickListener mItemtClickListener = new BaseQuickAdapter.OnItemClickListener() {
         @Override
-        public void onItemClick(View view, int position) {
+        public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
             IssuesModel issues = mAdapter.getItem(position);
             if (issues != null) {
 //                Intent intent = new Intent(mActivity, RepoDetailActivity.class);

@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * Created by mingjun on 16/7/29.
  */
-public class ContributorListAdapter extends BaseQuickAdapter<UserModel> {
+public class ContributorListAdapter extends BaseQuickAdapter<UserModel, BaseViewHolder> {
 
     public ContributorListAdapter(List<UserModel> data) {
         super(R.layout.layout_item_user, data);

@@ -74,8 +74,8 @@ public class MostStarFragment extends PTMVPFragment<MostStarPresenter> implement
         mRefreshLayout.setOnRefreshListener(mRefreshListener);
 
         mAdapter = new RepoListRecyclerAdapter(null);
-        mAdapter.setOnRecyclerViewItemClickListener(mItemtClickListener);
-        mAdapter.openLoadAnimation(BaseQuickAdapter.SCALEIN);
+        mAdapter.setOnItemClickListener(mItemtClickListener);
+        mAdapter.openLoadAnimation(BaseQuickAdapter.ALPHAIN);
         mRepoListView.setAdapter(mAdapter);
 
         mPresenter.onLoadMostStars(mCurrentType);
@@ -132,9 +132,9 @@ public class MostStarFragment extends PTMVPFragment<MostStarPresenter> implement
         mPresenter.onLoadMostStars(mCurrentType);
     }
 
-    private BaseQuickAdapter.OnRecyclerViewItemClickListener mItemtClickListener = new BaseQuickAdapter.OnRecyclerViewItemClickListener() {
+    private BaseQuickAdapter.OnItemClickListener mItemtClickListener = new BaseQuickAdapter.OnItemClickListener() {
         @Override
-        public void onItemClick(View view, int position) {
+        public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
             Repo repo = mAdapter.getItem(position);
             if (repo != null) {
                 Intent intent = new Intent(mActivity, RepoDetailActivity.class);

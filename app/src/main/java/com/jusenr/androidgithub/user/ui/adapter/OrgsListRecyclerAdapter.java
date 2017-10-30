@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * Created by mingjun on 16/7/18.
  */
-public class OrgsListRecyclerAdapter extends BaseQuickAdapter<OrganizationsModel> {
+public class OrgsListRecyclerAdapter extends BaseQuickAdapter<OrganizationsModel, BaseViewHolder> {
 
     public OrgsListRecyclerAdapter(List<OrganizationsModel> data) {
         super(R.layout.layout_item_orgs_list, data);

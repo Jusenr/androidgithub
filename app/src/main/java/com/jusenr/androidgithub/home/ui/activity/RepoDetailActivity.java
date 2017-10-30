@@ -176,10 +176,10 @@ public class RepoDetailActivity extends PTMVPActivity<RepoDetailPresenter> imple
     private void initViews() {
         mLlRootLayout.setVisibility(View.INVISIBLE);
         mContributorAdapter = new ContributorListAdapter(null);
-        mContributorAdapter.setOnRecyclerViewItemClickListener(new BaseQuickAdapter.OnRecyclerViewItemClickListener() {
+        mContributorAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
-            public void onItemClick(View view, int i) {
-                UserModel user = mContributorAdapter.getItem(i);
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                UserModel user = mContributorAdapter.getItem(position);
                 if (user != null) {
                     launchUser(user.getLogin());
                 }
@@ -188,10 +188,10 @@ public class RepoDetailActivity extends PTMVPActivity<RepoDetailPresenter> imple
         mRlvContributorList.setAdapter(mContributorAdapter);
 
         mForkUserAdapter = new ForkUserListAdapter(null);
-        mForkUserAdapter.setOnRecyclerViewItemClickListener(new BaseQuickAdapter.OnRecyclerViewItemClickListener() {
+        mForkUserAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
-            public void onItemClick(View view, int i) {
-                Repo repo = mForkUserAdapter.getItem(i);
+            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                Repo repo = mForkUserAdapter.getItem(position);
                 if (repo != null && repo.getOwner() != null) {
                     launchUser(repo.getOwner().getLogin());
                 }

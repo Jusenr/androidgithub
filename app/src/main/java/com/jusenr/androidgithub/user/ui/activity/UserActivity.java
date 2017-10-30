@@ -85,7 +85,8 @@ public class UserActivity extends PTMVPActivity<UserPresenter> implements UserCo
         mLlOrgsInfo.setVisibility(View.INVISIBLE);
 
         mAdapter = new OrgsListRecyclerAdapter(null);
-        mAdapter.setOnRecyclerViewItemClickListener(mItemtClickListener);
+        mAdapter.setOnItemClickListener(mItemtClickListener);
+        mAdapter.openLoadAnimation(BaseQuickAdapter.SCALEIN);
         mBrvOrgsList.setAdapter(mAdapter);
     }
 
@@ -157,9 +158,9 @@ public class UserActivity extends PTMVPActivity<UserPresenter> implements UserCo
         }
     }
 
-    private BaseQuickAdapter.OnRecyclerViewItemClickListener mItemtClickListener = new BaseQuickAdapter.OnRecyclerViewItemClickListener() {
+    private BaseQuickAdapter.OnItemClickListener mItemtClickListener = new BaseQuickAdapter.OnItemClickListener() {
         @Override
-        public void onItemClick(View view, int position) {
+        public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
             OrganizationsModel model = mAdapter.getItem(position);
             if (model != null) {
                 mUsername = model.getLogin();

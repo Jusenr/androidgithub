@@ -82,14 +82,14 @@ public class UserListActivity extends PTMVPActivity<UserListPresenter> implement
 
     private void initViews() {
         mAdapter = new UserListRecyclerAdapter(null);
-        mAdapter.setOnRecyclerViewItemClickListener(mItemtClickListener);
-
+        mAdapter.setOnItemClickListener(mItemtClickListener);
+        mAdapter.openLoadAnimation(BaseQuickAdapter.SLIDEIN_LEFT);
         mUserList.setAdapter(mAdapter);
     }
 
-    private BaseQuickAdapter.OnRecyclerViewItemClickListener mItemtClickListener = new BaseQuickAdapter.OnRecyclerViewItemClickListener() {
+    private BaseQuickAdapter.OnItemClickListener mItemtClickListener = new BaseQuickAdapter.OnItemClickListener() {
         @Override
-        public void onItemClick(View view, int position) {
+        public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
             UserModel user = mAdapter.getItem(position);
             if (user != null) {
                 Intent intent = new Intent(mActivity, UserActivity.class);

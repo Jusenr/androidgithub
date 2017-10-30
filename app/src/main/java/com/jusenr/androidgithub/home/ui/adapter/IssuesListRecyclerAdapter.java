@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Created by mingjun on 16/7/18.
  */
-public class IssuesListRecyclerAdapter extends BaseQuickAdapter<IssuesModel> {
+public class IssuesListRecyclerAdapter extends BaseQuickAdapter<IssuesModel, BaseViewHolder> {
 
     public IssuesListRecyclerAdapter(List<IssuesModel> data) {
         super(R.layout.layout_item_repo, data);

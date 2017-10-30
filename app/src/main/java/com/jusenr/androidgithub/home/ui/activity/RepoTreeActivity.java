@@ -84,15 +84,15 @@ public class RepoTreeActivity extends PTMVPActivity<RepoTreePresenter> implement
         mPathView.setCallback(mPathSelectionCallback);
 
         mAdapter = new RepoContentAdapter(null);
-        mAdapter.setOnRecyclerViewItemClickListener(mItemClickListener);
-
+        mAdapter.setOnItemClickListener(mItemClickListener);
+        mAdapter.openLoadAnimation(BaseQuickAdapter.SLIDEIN_BOTTOM);
         mRepoTree.setAdapter(mAdapter);
     }
 
-    private BaseQuickAdapter.OnRecyclerViewItemClickListener mItemClickListener = new BaseQuickAdapter.OnRecyclerViewItemClickListener() {
+    private BaseQuickAdapter.OnItemClickListener mItemClickListener = new BaseQuickAdapter.OnItemClickListener() {
         @Override
-        public void onItemClick(View view, int i) {
-            Content content = mAdapter.getItem(i);
+        public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+            Content content = mAdapter.getItem(position);
             if (content != null) {
                 if (content.isDir()) {
                     mPathView.addCrumb(new LinearBreadcrumbView.Crumb(content.path, ""), true);
