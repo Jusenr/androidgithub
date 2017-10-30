@@ -90,9 +90,9 @@ android {
             versionName = "V" + rootProject.getVersionName()
         }
 
-//        channel_wandoujia { versionName = "V" + defaultConfig.versionName }
-//        channel_xiaomi { versionName = "V" + defaultConfig.versionName }
-//        channel_huawei { versionName = "V" + defaultConfig.versionName }
+//        wandoujia { versionName = "V" + defaultConfig.versionName }
+//        xiaomi { versionName = "V" + defaultConfig.versionName }
+//        huawei { versionName = "V" + defaultConfig.versionName }
 
         productFlavors.all { flavor ->
             flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
