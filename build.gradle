@@ -3,9 +3,10 @@
 buildscript {
     repositories {
         jcenter()
+        google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.3'
+        classpath 'com.android.tools.build:gradle:3.0.1'
 
         classpath "io.realm:realm-gradle-plugin:3.1.4"
 
@@ -17,7 +18,31 @@ buildscript {
 allprojects {
     repositories {
         jcenter()
+        google()
         maven { url "https://jitpack.io" }
+//        maven { url "https://dl.bintray.com/jusenr/maven/" }
+        //AAR local library dependencies
+        flatDir {
+            dirs 'libs'
+        }
+    }
+    //Set unified encoding
+    tasks.withType(JavaCompile) {
+        options.encoding = "UTF-8"
+        //Enabling the compilation of a single daemon
+        options.fork = true
+        //Incremental compiling
+        options.incremental = true
+    }
+    //Setting unified javaDoc encoding
+    tasks.withType(Javadoc) {
+        options.addStringOption('Xdoclint:none', '-quiet')
+        options.addStringOption('encoding', 'UTF-8')
+        options.addStringOption('charSet', 'UTF-8')
+        options.addStringOption('link', 'http://docs.oracle.com/javase/7/docs/api')
+        options.addStringOption('windowtitle', 'androidtools')
+        options.addBooleanOption('author', true)
+        options.addBooleanOption('version', true)
     }
 }
 
@@ -33,22 +58,30 @@ task clean(type: Delete) {
     delete rootProject.buildDir
 }
 
-//获取版本号
+//Get version number
 def getVersionName() {
-    int num = rootProject.ext.VERSION_NUM
+    int num = rootProject.properties["PROJ_VERSION_NUM"] as int
     if (num > 0) {
-        return String.format("%s.%d", rootProject.ext.VERSIONNAME, rootProject.ext.VERSION_NUM)
+        return String.format("%s.%d", project.properties["PROJ_VERSIONNAME"], num)
     } else {
-        return rootProject.ext.VERSIONNAME
+        return project.properties["PROJ_VERSIONNAME"]
     }
+}
+//Git commit times
+int gitVersionCode() {
+    if (System.getenv("CI_BUILD")) {
+        return rootProject.ext.androids.versionCode
+    }
+    def count = "git rev-list HEAD --count".execute().text.trim()
+    return count.isInteger() ? count.toInteger() : 0
+}
+//Get current time
+def releaseTime(def format) {
+    return new Date().format(format)
 }
 
 ext {
     APP_LOG_TAG = "github_app"//app打印日志的tag
-
-    VERSIONNAME = "1.0.0"
-    VERSIONCODE = 3
-    VERSION_NUM = 3 //内部测试使用的小版本号
 
     MANIFESTPLACEHOLDERS = [UMENG_APPKEY_VALUE: "59df4725aed179510f0004fd"]
 }
